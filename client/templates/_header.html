@@ -1,0 +1,16 @@
+<template name="header">
+	<header>
+		<a href="" class="logo cicon">c</a>
+		<section class="user">
+			<span class="user_name">{{currentUser.profile.name}} {{currentUser.profile.lastname}}</span>
+			<div class="user_actions">
+				<span class="user_actions_icon cicon">f</span>
+			</div>
+		</section>
+	</header>
+	<ul class="dropmenu">
+		<li>{{currentUser.profile.name}} {{currentUser.profile.lastname}}</li>
+		<li><a href="/edit/user">Editar Perfil</a></li>
+		<li><a href="/logout">Cerrar Sesión</a></li>
+	</ul>
+</template>
