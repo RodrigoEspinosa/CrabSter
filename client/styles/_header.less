@@ -30,22 +30,32 @@ header{
 	width: 100%;
 	z-index: 24;
 	.logo{
-		color: whiteSmoke;
-		font-size: 25px;
-		line-height: 25px;
-		position: absolute;
-		left: 20px;
-		top: 10px;
-		-webkit-transition:all 0.25s;
-		transition:all 0.25s;
-		&:hover{
+		display: inline-block;
+		position: relative;
+		a{
+			color: whiteSmoke;
+			display: inline-block;
+			font-size: 25px;
+			color: whiteSmoke;
+			left: 20px;
+			line-height: 25px;
 			text-decoration: none;
-			left: 30px;
+			top: 10px;
+			-webkit-transition: all 0.25s;
+			   -moz-transition: all 0.25s;
+				 -o-transition: all 0.25s;
+				-ms-transition: all 0.25s;
+					transition: all 0.25s;
+			&:hover{
+				left: 30px;
+			}
 		}
 	}
 	.user{
-		display: block;
+		display: inline-block;
 		margin: 0 10px;
+		position: absolute;
+		right: 0;
 		text-align: right;
 		.user_name{
 			bottom: 2px;
