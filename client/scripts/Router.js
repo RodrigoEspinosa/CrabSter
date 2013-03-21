@@ -55,11 +55,10 @@
             }
         }
     });
-    
+
     Router = new TasksRouter();
-    
+
     Meteor.startup(function () {
         Backbone.history.start({pushState: true});
     });
-    
 }(jQuery));
