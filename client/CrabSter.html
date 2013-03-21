@@ -1,0 +1,23 @@
+<head>
+	<title>CrabSter</title>
+</head>
+<body>
+	{{#if currentUser }}
+		{{> header }}
+		{{> aside }}
+		<!-- MAIN -->
+		{{> main }}
+		<!-- HELPERS -->
+		{{> Modal_new_client }}
+		{{> Modal_edit_client }}
+		{{> Modal_new_project }}
+		<!-- CHAT -->
+		{{> Chat_window }}
+	{{else}}
+		{{#if new_user }}
+			{{> new_user }}
+		{{else}}
+			{{> login }}
+		{{/if}}
+	{{/if}}
+</body>

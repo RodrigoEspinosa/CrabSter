@@ -1,0 +1,97 @@
+@font-face{
+	font-family: icons;
+	src: url("/fonts/cbstr-icons.ttf"), url("/fonts/cbstr-icons.eot");
+}
+::-webkit-scrollbar{width: 5px;}
+::-webkit-scrollbar:hover{cursor:pointer; width: 8px;}
+::-webkit-scrollbar-button{display: none;}
+::-webkit-scrollbar-track{background: rgba(51, 51, 51, 0.25);}
+::-webkit-scrollbar-thumb{width: 5px; background: rgb(51, 51, 51);}
+::-webkit-scrollbar-thumb:hover{cursor:pointer;}
+.cicon{
+	font-family: icons;
+	-webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	   -khtml-user-select: none;
+		 -moz-user-select: none;
+		  -ms-user-select: none;
+			  user-select: none;
+}
+.accounts-dialog{
+	
+}
+.accounts-centered-dialog{
+
+}
+#login-dropdown-list{
+	top: 28px;
+	left: -10px;
+	border: none;
+	background: hsl(0, 100%, 100%);
+	border-radius: 0 0 4px 4px;
+	-webkit-box-shadow: 0 3px 6px 1px hsla(0, 0%, 0%, 0.3);
+			box-shadow: 0 3px 6px 1px hsla(0, 0%, 0%, 0.3);
+	color: hsl(0, 0%, 20%);
+	font-size: inherit;
+	height: 0;
+	margin: 0;
+	opacity: 0;
+	padding: 0 12px;
+	-webkit-transition: all 650ms;
+	   -moz-transition: all 650ms;
+		-ms-transition: all 650ms;
+		 -o-transition: all 650ms;
+			transition: all 650ms;
+	width: 225px;
+	z-index: 1000;
+	a{
+		text-decoration: none;
+	}
+	a.login-close-text{
+		// display: none;
+	}
+	&.visible{
+		height: auto;
+		opacity: 1;
+		padding: 20px 12px;
+	}
+}
+input{
+	vertical-align: top;
+}
+.recycle-bin{
+	display: inline-block;
+	height: 26px;
+	width: 20px;
+	&:hover{
+		cursor: pointer;
+		.rb-top{
+			left: 5px;
+			-webkit-transform: rotate(45deg);
+			   -moz-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				 -o-transform: rotate(45deg);
+					transform: rotate(45deg);
+			top: -2px;
+		}
+	}
+	.rb-top{
+		background: url("/img/bin_1.png") no-repeat;
+		height: 5px;
+		position: relative;
+		-webkit-transition: all 0.3s;
+		   -moz-transition: all 0.3s;
+		    -ms-transition: all 0.3s;
+			 -o-transition: all 0.3s;
+				transition: all 0.3s;
+		width: 20px;
+	}
+	.rb-bottom{
+		background: url("/img/bin_2.png") no-repeat;
+		height: 21px;
+		position: relative;
+		width: 20px;
+	}
+}
+// login-dropdown-list
+// login-buttons-dropdown-align-left

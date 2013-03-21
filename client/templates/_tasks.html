@@ -1,0 +1,8 @@
+<template name="tasks">
+	<h2 class="tasks_title">{{tasks_title}}</h2>
+	<ul class="tasks">
+	{{#each tasks}}
+		{{> task}}
+	{{/each}}
+	</ul>
+</template>

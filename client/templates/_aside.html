@@ -1,0 +1,28 @@
+<template name="aside">
+	<aside>
+		<div class="aside_upper">
+			<span class="aside_upper_location">{{location}}, </span>
+			<span class="aside_upper_date">{{date}}</span>
+		</div>
+		<ul class="nav nav-list">
+		{{#each clients}}
+			<li class="nav-header"><span>{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
+			{{#each projects}}
+				<li class=""><a href="/project/{{_id}}">{{name}}</a></li>
+			{{/each}}
+			<li><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
+		{{/each}}
+		</ul>
+		<div class="aside_user_list">
+			<ul>
+			{{#each user_list}}
+				<li>
+					<img src="">
+					<span class="user_list_name">{{profile.name}}</span>
+					<span class="user_list_lastname">{{profile.lastname}}</span>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	</aside>
+</template>

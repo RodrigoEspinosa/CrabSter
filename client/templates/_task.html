@@ -1,0 +1,25 @@
+<template name="task">
+	<li class="task {{#if completed}}task_done{{/if}}">
+		<span class="task_title">{{title}}</span>
+		<div class="task_assigned_users">
+			
+		</div>
+		<div class="task_actions">
+			<!-- VER  / PARA VER COMENTARIOS -->
+			<div class="task_action delete recycle-bin">
+				<div class="rb-top"></div>
+				<div class="rb-bottom"></div>
+			</div>
+		</div>
+		<div class="task_dates">
+			<!-- DATE -->
+		</div>
+		<div class="mark_toggler">
+		{{#if completed}}
+			<a class="task_action mark_undone" href="javascript:void(0)">abrir?</a>
+		{{else}}
+			<a class="task_action mark_done" href="javascript:void(0)">cerrar?</a>
+		{{/if}}
+		</div>
+	</li>
+</template>

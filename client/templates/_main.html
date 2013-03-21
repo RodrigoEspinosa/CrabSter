@@ -1,0 +1,11 @@
+<template name="main">
+	<div id="main" role="main">
+		{{#if currentUser}}
+			{{> tasks}}
+
+			{{> new_task}}
+		{{else}}
+			<div class="alert alert-error"><h4>Error!</h4>No estás autentificado.</div>
+		{{/if}}
+	</div>
+</template>

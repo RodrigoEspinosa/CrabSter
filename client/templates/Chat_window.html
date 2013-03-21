@@ -1,0 +1,17 @@
+<template name="Chat_window">
+	<div class="chat_window">
+		<h4 class="chat_window_title">{{title}}</h4>
+		<div class="chat_window_messages">
+			{{#each messages}}
+			<div class="chat_window_message">
+				<!-- <div class="chat_window_message_from">{{from}}</div> -->
+				&#9658;
+				<div class="chat_window_message_text">{{text}}</div>
+			</div>
+			{{/each}}
+		</div>
+		<form class="chat_window_new">
+			<textarea class="chat_window_new_text" placeholder="Mensaje"></textarea>
+		</form>
+	</div>
+</template>
