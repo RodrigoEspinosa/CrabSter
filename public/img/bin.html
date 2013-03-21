@@ -1,0 +1,37 @@
+<style>
+	.recycle-bin{
+		width: 20px;
+		height: 26px;
+		}
+	.rb-top{
+		width: 20px;
+		height: 5px;
+		background: url(bin_1.png) no-repeat;
+		position: relative;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		-o-transition: all 0.3s;
+	}
+	.rb-bottom{
+		width: 20px;
+		height: 21px;
+		background: url(bin_2.png) no-repeat;
+		position: relative;
+	}
+	.recycle-bin:hover{
+		cursor: pointer;
+	}
+	.recycle-bin:hover .rb-top{
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		top: -2px;
+		left: 5px;
+	}
+</style>
+<div class="recycle-bin">
+	<div class="rb-top"></div>
+	<div class="rb-bottom"></div>
+</div>
