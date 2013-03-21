@@ -17,12 +17,18 @@ li.task{
     &:hover{
         background: #333;
         color: whiteSmoke;
+        .task_assigned_users,
+        .task_actions,
+        .task_dates,
+        .mark_toggler{
+            display: inline-block;
+        }
     }
     .task_assigned_users,
     .task_actions,
     .task_dates,
     .mark_toggler{
-        display: inline-block;
+        display: none;
     }
     div.mark_toggler{
         // background: white;
