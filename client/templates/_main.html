@@ -1,4 +1,5 @@
 <template name="main">
+	{{#if show_tasks}}
 	<div id="main" role="main">
 		{{#if currentUser}}
 			{{> tasks}}
@@ -8,4 +9,5 @@
 			<div class="alert alert-error"><h4>Error!</h4>No estás autentificado.</div>
 		{{/if}}
 	</div>
+	{{/if}}
 </template>

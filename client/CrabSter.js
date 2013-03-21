@@ -44,6 +44,12 @@ Template.aside.user_list = function () {
 	return Meteor.users.find();
 };
 
+Template.main.show_tasks = function () {
+	if( Session.get("current_project") )
+		return true;
+	return false;
+};
+
 Template.tasks.tasks_title = function () {
 	return "Todas las tareas";
 };
