@@ -12,6 +12,9 @@
 	</header>
 	<ul class="dropmenu">
 		<li>{{currentUser.profile.name}} {{currentUser.profile.lastname}}</li>
+		{{#if currentUser.profile.isAdmin}}
+		<li><a href="/new/client">Añadir Cliente</a></li>
+		{{/if}}
 		<li><a href="/edit/user">Editar Perfil</a></li>
 		<li><a href="/logout">Cerrar Sesión</a></li>
 	</ul>
