@@ -5,13 +5,13 @@
 			<span class="aside_upper_location">{{location}}, </span>
 			<span class="aside_upper_date">{{date}}</span>
 		</div>
-		<ul class="nav nav-list">
+		<ul class="client_list">
 		{{#each clients}}
-			<li class="nav-header"><span>{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
+			<li class="client_list_header"><span>{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
 			{{#each projects}}
-				<li class="nav-items"><a href="/project/{{_id}}">{{name}}</a></li>
+				<li class="client_list_items"><a href="/project/{{_id}}">{{name}}</a></li>
 			{{/each}}
-			<li class="nav-ilems last"><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
+			<li class="client_list_items last"><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
 		{{/each}}
 		</ul>
 		<div class="aside_user_list">
