@@ -22,7 +22,11 @@ Meteor.publish("messages", function () {
 });
 
 Meteor.publish("users", function () {
-	return Meteor.users.find({});
+	var users = Meteor.users.find({}).fetch();
+	for( index in users ) {
+		users[index].profile.emailHash = hex_md5(users[index].email[0].address);
+	}
+	return users;
 });
 
 Meteor.publish("task_comments", function () {
@@ -30,7 +34,7 @@ Meteor.publish("task_comments", function () {
 });
 
 Meteor.publish("records", function () {
-	return Records.find();
+	return Records.find({});
 });
 
 Clients.allow({
