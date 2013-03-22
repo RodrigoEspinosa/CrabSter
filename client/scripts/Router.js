@@ -75,5 +75,12 @@
 
     Meteor.startup(function () {
         Backbone.history.start({pushState: true});
+
+        $(document).on("click", "a:not[data-bypass]", function(event) {
+            event.preventDefault();
+            var href, protocol;
+            href = $(this).attr("href");
+            Router.history.navigate(href, true);
+        });
     });
 }(jQuery));
