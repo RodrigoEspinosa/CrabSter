@@ -2,7 +2,7 @@ li.task{
     // border-radius: 4px;
     display: block;
     height: 40px;
-    padding: 0 10px;
+    padding: 4px 10px;
     line-height: 40px;
     -webkit-transition: all 120ms;
        -moz-transition: all 120ms;
@@ -35,11 +35,16 @@ li.task{
         .show_details{
             .cicon{
                 color: whiteSmoke;
-                font-size: 20px;
+                font-size: 15px;
             }
             &:hover{
-                text-decoration: none;
+                .cicon{
+                    text-decoration: none;
+                }
             }
+        }
+        .delete{
+            transform: scale(0.7);
         }
     }
     .task_dates{
@@ -54,9 +59,11 @@ li.task{
     .mark_toggler{
         opacity: 0.25;
         font-size: 15px;
+        color: whiteSmoke;
         text-transform: capitalize;
         &:hover{
             opacity: 0.5;
+            text-decoration: none;
         }
     }
     div.mark_toggler{
