@@ -10,6 +10,7 @@
             "logout": "userLogout",
             "project/:projectID": "getProjectTasks",
             "new/:collection": "newCollectionModal",
+            "task/:taskID": "taskDetails",
             "new/:collection/:partnerID": "newCollectionModalWithPartner",
             "edit/:collection/:collectionID": "editCollectionModal"
         },
@@ -40,6 +41,12 @@
             case "user":
                 Session.set("new_user", true);
                 break;
+            }
+        },
+        taskDetails: function (taskID) {
+            Session.set("task_id", taskID);
+            Template.Modal_task_details.rendered = function () {
+                $("#Modal_task_details").modal("show");
             }
         },
         newCollectionModalWithPartner: function (collection, partnerID) {
