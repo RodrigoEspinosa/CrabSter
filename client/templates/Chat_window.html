@@ -4,14 +4,21 @@
 		<div class="chat_window_messages">
 			{{#each messages}}
 			<div class="chat_window_message">
-				<!-- <div class="chat_window_message_from">{{from}}</div> -->
-				&#9658;
-				<div class="chat_window_message_text">{{text}}</div>
+				{{#if createdBySelfUser}}
+					<div class="chat_window_message_text">
+						<span class="">&#9658;</span>
+						<span class="">{{text}}</span>
+					</div>
+				{{else}}
+					<div class="chat_window_message_text">
+						<span>{{text}}</span>
+					</div>
+				{{/if}}
 			</div>
 			{{/each}}
 		</div>
 		<form class="chat_window_new">
-			<textarea class="chat_window_new_text" placeholder="Mensaje"></textarea>
+			<textarea class="chat_window_new_text" placeholder="escribir..." rows="2"></textarea>
 		</form>
 	</div>
 </template>

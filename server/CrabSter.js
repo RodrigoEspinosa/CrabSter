@@ -30,9 +30,7 @@ Meteor.publish("task_comments", function () {
 });
 
 Meteor.publish("records", function () {
-	return Records.find({
-		user_id: Meteor.userId()
-	});
+	return Records.find();
 });
 
 Clients.allow({

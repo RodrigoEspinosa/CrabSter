@@ -118,7 +118,12 @@ Template.Chat_window.title = function () {
 
 Template.Chat_window.messages = function () {
 	var filter = {};
-	return Messages.find(filter);
+	var m = Messages.find(filter).fetch();
+	for( index in m ) {
+		m[index].createdBySelfUser = m[index].from === Meteor.userId();
+	}
+	if( m )
+		return m;
 };
 
 /* UTILS */
@@ -128,12 +133,14 @@ function dateFormat (dateNumber) {
 	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2))
 }
 function createRecord (collectionID, elementID) {
-	var record, userID;
+	var record, userID, timestamp;
+	timestamp = new Date();
 	userID = Meteor.userId();
     record = {
         user_id: userID,
         collection: collectionID,
-        element: elementID
+        element: elementID,
+        createdAt: timestamp
     };
-    return Record.insert(record);
+    return Records.insert(record);
 }
