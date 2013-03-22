@@ -101,7 +101,11 @@ Template.Modal_task_details.task_title = function () {
 };
 
 Template.Modal_task_details.comments = function () {
-	var t = Task_Comments.find({task: Session.get("current_task")});
+	var t = Task_Comments.find({task: Session.get("current_task")}).fetch();
+	for( index in t ) {
+		var user = Meteor.users.findOne({_id: t[index].createdBy}).profile.name;
+		t[index].createdBy = user;
+	}
 	if( t )
 		return t;
 };
