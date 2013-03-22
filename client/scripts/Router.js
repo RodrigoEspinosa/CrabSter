@@ -28,10 +28,14 @@
         newCollectionModal: function (collection) {
             switch (collection) {
             case "client":
-                $("#Modal_new_client").modal("show");
+                Template.Modal_new_client.rendered = function () {
+                    $("#Modal_new_client").modal("show");
+                }
                 break;
             case "project":
-                $("#Modal_new_project").modal("show");
+                Template.Modal_new_project.rendered = function () {
+                    $("#Modal_new_project").modal("show");    
+                }
                 break;
             case "user":
                 Session.set("new_user", true);
@@ -42,7 +46,9 @@
             Session.set("partner_id", partnerID);
             switch (collection) {
             case "project":
-                $("#Modal_new_project").modal("show");
+                Template.Modal_new_project.rendered = function () {
+                    $("#Modal_new_project").modal("show");                    
+                }
                 break;
             }
         },
@@ -50,7 +56,9 @@
             Session.set("current_editing", collectionID);
             switch (collection) {
             case "client":
-                $("#Modal_edit_client").modal("show");
+                Template.Modal_edit_client.rendered = function () {
+                    $("#Modal_edit_client").modal("show");    
+                }
                 break;
             }
         }
