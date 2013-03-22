@@ -202,6 +202,9 @@
             var $chat_window = $(event.target).parent(".chat_window");
             ( $chat_window.hasClass("opened") ) ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
         },
+        "focus .chat_window_new_text": function (event) {
+            createRecord("messages", this._id);
+        },
         "submit form": function (event) {
             event.preventDefault();
 
