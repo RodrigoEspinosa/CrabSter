@@ -45,6 +45,7 @@ li.task{
         }
         .delete{
             transform: scale(0.7);
+            -webkit-transform: scale(0.7);
         }
     }
     .task_dates{
@@ -57,13 +58,16 @@ li.task{
         }
     }
     .mark_toggler{
-        opacity: 0.25;
-        font-size: 15px;
-        color: whiteSmoke;
-        text-transform: capitalize;
+        a{
+            opacity: 0.25;
+            font-size: 15px;
+            color: whiteSmoke;
+            text-transform: capitalize;
+        }
         &:hover{
-            opacity: 0.5;
-            text-decoration: none;
+            a{
+                text-decoration: none;
+            }
         }
     }
     div.mark_toggler{
