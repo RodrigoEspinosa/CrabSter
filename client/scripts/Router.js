@@ -44,7 +44,7 @@
             }
         },
         taskDetails: function (taskID) {
-            Session.set("task_id", taskID);
+            Session.set("current_task", taskID);
             Template.Modal_task_details.rendered = function () {
                 $("#Modal_task_details").modal("show");
             }

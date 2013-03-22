@@ -1,7 +1,8 @@
-Clients 	= new Meteor.Collection("clients");
-Projects 	= new Meteor.Collection("projects");
-Tasks 		= new Meteor.Collection("tasks");
-Messages 	= new Meteor.Collection("messages");
+Clients 	  = new Meteor.Collection("clients");
+Projects 	  = new Meteor.Collection("projects");
+Tasks 		  = new Meteor.Collection("tasks");
+Messages 	  = new Meteor.Collection("messages");
+Task_Comments = new Meteor.Collection("task_comments");
 
 Meteor.publish("clients", function () {
 	return Clients.find({});
@@ -21,6 +22,10 @@ Meteor.publish("messages", function () {
 
 Meteor.publish("users", function () {
 	return Meteor.users.find({});
+});
+
+Meteor.publish("task_comments", function () {
+	return Task_Comments.find({});
 });
 
 Clients.allow({
@@ -60,6 +65,18 @@ Projects.allow({
 });
 
 Messages.allow({
+	insert: function(userID, taskID) {
+		return true;
+	},
+	update: function(userID, tasksID) {
+		return true;
+	},
+	remove: function(userID, tasksID) {
+		return true;
+	}
+});
+
+Task_Comments.allow({
 	insert: function(userID, taskID) {
 		return true;
 	},

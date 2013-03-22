@@ -1,7 +1,8 @@
-Clients 	= new Meteor.Collection("clients");
-Projects 	= new Meteor.Collection("projects");
-Tasks 		= new Meteor.Collection("tasks");
-Messages 	= new Meteor.Collection("messages");
+Clients 	  = new Meteor.Collection("clients");
+Projects 	  = new Meteor.Collection("projects");
+Tasks 		  = new Meteor.Collection("tasks");
+Messages 	  = new Meteor.Collection("messages");
+Task_Comments = new Meteor.Collection("task_comments");
 
 Meteor.autorun(function () {
 	// Meteor.subscribe("tasks", Session.get());
@@ -10,6 +11,7 @@ Meteor.autorun(function () {
 	Meteor.subscribe("tasks");
 	Meteor.subscribe("messages");
 	Meteor.subscribe("users");
+	Meteor.subscribe("task_comments");
 	Meteor.subscribe("current_project", Session.get("current_project"));
 	Meteor.subscribe("current_editing", Session.get("current_editing"));
 });
@@ -90,6 +92,18 @@ Template.Modal_edit_client.edit_client_name = function () {
 	var c = Clients.findOne({_id: Session.get("current_editing")});
 	if( c )
 		return c.name;
+};
+
+Template.Modal_task_details.task_title = function () {
+	var t = Tasks.findOne({_id: Session.get("current_task")});
+	if( t )
+		return t.title;
+};
+
+Template.Modal_task_details.comments = function () {
+	var t = Task_Comments.find({task: Session.get("current_task")});
+	if( t )
+		return t;
 };
 
 Template.Chat_window.title = function () {

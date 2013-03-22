@@ -2,14 +2,16 @@
 	<div id="Modal_task_details" class="modal hide fade">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>Task name</h3>
+			<h3>{{task_title}}</h3>
 		</div>
 		<div class="modal-body">
-			
+			{{#each comments}}
+				<span>{{text}}</span>
+			{{/each}}
 		</div>
 		<div class="modal-footer">
-			<input type="text">
-			<a id="edit_client_save" href="#" class="btn btn-primary">Guardar</a>
+			<input class="task_details_new_comment_text input-xlarge" type="text" style="vertical-align: top;">
+			<a class="task_details_new_comment_save btn btn-primary" href="#">Enviar</a>
 		</div>
 	</div>
 </template>
