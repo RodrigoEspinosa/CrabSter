@@ -53,6 +53,8 @@ aside{
 		height: 	 -o-calc(~"70% - 130px");
 		height: 		calc(~"70% - 130px");
 		.nav-header{
+			color: #333;
+			border-top: 1px solid #fff;
 			.aside_edit_client{
 				display: inline-block;
 				margin-left: 10px;
@@ -65,7 +67,20 @@ aside{
 			}
 		}
 		.nav-items{
-
+			a{
+				padding: 3px 15px 3px 50px;
+				margin: 0;
+				color: #333;
+			}
+			&:hover{
+				a{
+					background: #333;
+					color: whiteSmoke;
+				}
+			}
+		}
+		.last{
+			border-bottom: 1px solid #999;
 		}
 	}
 	.aside_user_list{
