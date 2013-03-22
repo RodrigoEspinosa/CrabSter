@@ -1,13 +1,15 @@
 <template name="main">
-	{{#if show_tasks}}
-	<div id="main" role="main">
-		{{#if currentUser}}
+	{{#if currentUser}}
+		{{#if show_tasks}}
+		<div id="main" role="main">
 			{{> tasks}}
 
 			{{> new_task}}
+		</div>
 		{{else}}
-			<div class="alert alert-error"><h4>Error!</h4>No estás autentificado.</div>
+			{{> profile}}
 		{{/if}}
-	</div>
+	{{else}}
+		<div class="alert alert-error"><h4>Error!</h4>No estás autentificado.</div>
 	{{/if}}
 </template>

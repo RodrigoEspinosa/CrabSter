@@ -1,0 +1,48 @@
+#profile{
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+			box-sizing: border-box;
+	margin: 20px 0 0 auto;
+	min-height: 400px;
+	width: -webkit-calc(~"100% - 290px");
+	width:    -moz-calc(~"100% - 290px");
+	width: 		-o-calc(~"100% - 290px");
+	width:		   calc(~"100% - 290px");
+	.profile_userInfo{
+		display: inline-block;
+		padding-top: 5%;
+		.profile_userInfo_img{
+			display: block;
+		}
+		.profile_userInfo_name{
+			color: white;
+			display: block;
+			font-size: 24px;
+		}
+		.profile_userInfo_lastname{
+			color: white;
+			display: block;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	}
+	.profile_userStats{
+		display: inline-block;
+		padding-top: 7%;
+		position: absolute;
+		right: 30px;
+		text-align: right;
+		.profile_userStats_tasksPending,
+		.profile_userStats_tasksFinished,
+		.profile_userStats_projectClosed
+		{
+			color: #444;
+			display: block;
+			span{
+				font-size: 24px;
+				font-weight: bold;
+			}
+		}
+	}
+}

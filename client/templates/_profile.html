@@ -1,0 +1,13 @@
+<template name="profile">
+	<div id="profile" role="main">
+		<div class="profile_userInfo">
+			<img class="profile_userInfo_img" src="/img/default-avatar.jpg">
+			<span class="profile_userInfo_name">{{currentUser.profile.name}}</span> <span class="profile_userInfo_lastname">{{currentUser.profile.lastname}}</span>
+		</div>
+		<div class="profile_userStats">
+			<span class="profile_userStats_tasksPending"><span>X</span> tareas pendientes</span>
+			<span class="profile_userStats_tasksFinished"><span>X</span> tareas terminadas</span>
+			<span class="profile_userStats_projectClosed"><span>X</span> proyectos terminados</span>
+		</div>
+	</div>
+</template>
