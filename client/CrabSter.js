@@ -27,7 +27,7 @@ Template.aside.location = function () {
 
 Template.aside.date = function () {
 	var d = new Date();
-	return d.getDate()+"."+d.getMonth()+"."+(d.getFullYear()).toString().substr(2);
+	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear()).toString().substr(2);
 };
 
 Template.aside.clients = function () {
@@ -53,12 +53,18 @@ Template.main.show_tasks = function () {
 Template.tasks.tasks_title = function () {
 	return "Todas las tareas";
 };
+
 Template.tasks.tasks = function () {
 	var filter = {};
 	if( Session.get("current_project") != null ){
 		filter.project = Session.get("current_project");
 	}
 	return Tasks.find(filter);
+};
+
+Template.task.date = function () {
+	var d = new Date(this.createdAt);
+	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2));
 };
 
 Template.Modal_edit_client.edit_client_name = function () {
