@@ -1,6 +1,7 @@
 <template name="aside">
 	<aside>
 		<div class="aside_upper">
+			<span class="aside_upper_logo cicon">b</span>
 			<span class="aside_upper_location">{{location}}, </span>
 			<span class="aside_upper_date">{{date}}</span>
 		</div>
@@ -8,7 +9,7 @@
 		{{#each clients}}
 			<li class="nav-header"><span>{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
 			{{#each projects}}
-				<li class=""><a href="/project/{{_id}}">{{name}}</a></li>
+				<li class="nav-items"><a href="/project/{{_id}}">{{name}}</a></li>
 			{{/each}}
 			<li><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
 		{{/each}}
