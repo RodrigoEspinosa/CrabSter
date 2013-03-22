@@ -1,5 +1,9 @@
 <template name="tasks">
-	<h2 class="tasks_title">{{tasks_title}}</h2>
+	<h2 class="tasks_title">{{project_name}}</h2>
+	<div class="tasks_dates">
+		<span class="tasks_dates_createdAt">{{createdAt}}</span>
+		<span class="tasks_dates_deadline">{{deadline}}</span>
+	</div>
 	<ul class="tasks">
 	{{#each tasks}}
 		{{> task}}

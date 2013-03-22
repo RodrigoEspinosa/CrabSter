@@ -3,7 +3,6 @@ Projects 	= new Meteor.Collection("projects");
 Tasks 		= new Meteor.Collection("tasks");
 Messages 	= new Meteor.Collection("messages");
 
-
 Meteor.autorun(function () {
 	// Meteor.subscribe("tasks", Session.get());
 	Meteor.subscribe("clients");
@@ -50,8 +49,29 @@ Template.main.show_tasks = function () {
 	return false;
 };
 
-Template.tasks.tasks_title = function () {
-	return "Todas las tareas";
+Template.tasks.project_name = function () {
+	var project;
+	project = Projects.find({"_id": Session.get("current_project")}).fetch();
+	if( project[0] )
+		return project[0].name;
+};
+
+Template.tasks.createdAt = function () {
+	var project, date;
+	project = Projects.find({"_id": Session.get("current_project")}).fetch();
+	if( project[0] ) {
+		var date = project[0].createdAt;
+		return dateFormat(date);
+	}
+};
+
+Template.tasks.deadline = function () {
+	var project, date;
+	project = Projects.find({"_id": Session.get("current_project")}).fetch();
+	if( project[0] && project[0].deadline ) {
+		var date = project[0].deadline;
+		return dateFormat(date);
+	}
 };
 
 Template.tasks.tasks = function () {
@@ -63,8 +83,7 @@ Template.tasks.tasks = function () {
 };
 
 Template.task.date = function () {
-	var d = new Date(this.createdAt);
-	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2));
+	return dateFormat(this.createdAt);
 };
 
 Template.Modal_edit_client.edit_client_name = function () {
@@ -81,3 +100,10 @@ Template.Chat_window.messages = function () {
 	var filter = {};
 	return Messages.find(filter);
 };
+
+/* UTILS */
+function dateFormat (dateNumber) {
+	var d;
+	d = new Date(dateNumber);
+	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2))
+}
