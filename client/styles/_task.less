@@ -1,7 +1,8 @@
 li.task{
     // border-radius: 4px;
     display: block;
-    padding: 4px;
+    height: 40px;
+    padding: 0 10px;
     line-height: 40px;
     -webkit-transition: all 120ms;
        -moz-transition: all 120ms;
@@ -30,6 +31,34 @@ li.task{
     .mark_toggler{
         display: none;
     }
+    .task_actions{
+        .show_details{
+            .cicon{
+                color: whiteSmoke;
+                font-size: 20px;
+            }
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+    .task_dates{
+        margin-left: 20px;
+        padding-left: 10px;
+        border-left: 1px solid whiteSmoke;
+        opacity: 0.25;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+    .mark_toggler{
+        opacity: 0.25;
+        font-size: 15px;
+        text-transform: capitalize;
+        &:hover{
+            opacity: 0.5;
+        }
+    }
     div.mark_toggler{
         // background: white;
         // border-radius: 4px;
@@ -44,7 +73,7 @@ li.task{
     }
     span.task_title{
         display: inline-block;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: bold;
         margin: 0;
         padding: 0 10px;
