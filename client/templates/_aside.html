@@ -7,7 +7,7 @@
 		</div>
 		<ul class="client_list">
 		{{#each clients}}
-			<li class="client_list_header"><span class="cicon">d</span><span>{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
+			<li class="client_list_header"><span class="cicon">d</span><span class="client_list_header_name">{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
 			{{#each projects}}
 				<li class="client_list_items"><a href="/project/{{_id}}">{{name}}</a></li>
 			{{/each}}
