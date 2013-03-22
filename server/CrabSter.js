@@ -22,10 +22,10 @@ Meteor.publish("messages", function () {
 });
 
 Meteor.publish("users", function () {
-	var users = Meteor.users.find({}).fetch();
-	for( index in users ) {
-		users[index].profile.emailHash = hex_md5(users[index].email[0].address);
-	}
+	var users = Meteor.users.find({});
+	users.forEach(function (user) {
+		user.profile.emailHash = hex_md5(user.emails[0].address);
+	});
 	return users;
 });
 
