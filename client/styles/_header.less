@@ -92,7 +92,6 @@ header{
 }
 .dropmenu{
 	background: whiteSmoke;
-	box-shadow: -1px 1px 5px #999;
 	color: hsl(0, 0, 35%);
 	display: block;
 	font-size: 14px;
@@ -123,10 +122,15 @@ header{
 			border-bottom: none;
 			box-shadow: none;
 		}
+		a{
+			color: #333;
+		}
 		&:hover{
 			background: #333;
-			color: whiteSmoke;
-			text-decoration: none;
+			a{
+				color: whiteSmoke;
+				text-decoration: none;
+			}
 		}
 	}
 }
