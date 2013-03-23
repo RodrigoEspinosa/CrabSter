@@ -137,8 +137,8 @@ function createRecord (collectionID, elementID) {
 	userID = Meteor.userId();
     record = {
         user_id: userID,
-        collection: collectionID,
-        element: elementID,
+        collection_id: collectionID,
+        element_id: elementID,
         createdAt: timestamp
     };
     return Records.insert(record);

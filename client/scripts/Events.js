@@ -203,7 +203,8 @@
             ( $chat_window.hasClass("opened") ) ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
         },
         "focus .chat_window_new_text": function (event) {
-            createRecord("messages", this._id);
+            console.log( this );
+            // createRecord("messages", this._id);
         },
         "submit form": function (event) {
             event.preventDefault();
