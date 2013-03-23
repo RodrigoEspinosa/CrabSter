@@ -7,10 +7,16 @@
 		</div>
 		<ul class="client_list">
 		{{#each clients}}
-			<li class="client_list_header"><span class="cicon">d</span><span class="client_list_header_name">{{name}}</span> <a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a></li>
-			{{#each projects}}
-				<li class="client_list_items"><a href="/project/{{_id}}">{{name}}</a></li>
-			{{/each}}
+			<li class="client_list_header">
+				<span class="cicon">d</span>
+				<span class="client_list_header_name">{{name}}</span> 
+				<a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a>
+				<ul class="project_list">
+					{{#each projects}}
+						<li class="client_list_items"><a href="/project/{{_id}}">{{name}}</a></li>
+					{{/each}}
+				</ul>
+			</li>
 			<li class="client_list_items last"><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
 		{{/each}}
 		</ul>
