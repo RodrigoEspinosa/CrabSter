@@ -7,12 +7,16 @@
     
     TasksRouter = Backbone.Router.extend({
         routes: {
+            "": "index",
             "logout": "userLogout",
             "project/:projectID": "getProjectTasks",
             "new/:collection": "newCollectionModal",
             "task/:taskID": "taskDetails",
             "new/:collection/:partnerID": "newCollectionModalWithPartner",
             "edit/:collection/:collectionID": "editCollectionModal"
+        },
+        index: function () {
+            Session.set("current_project", null);
         },
         userLogout: function () {
             Meteor.logout(function (Error) {
@@ -29,13 +33,15 @@
         newCollectionModal: function (collection) {
             switch (collection) {
             case "client":
+                $("#Modal_new_client").modal("show");
                 Template.Modal_new_client.rendered = function () {
                     $("#Modal_new_client").modal("show");
                 }
                 break;
             case "project":
+                $("#Modal_new_project").modal("show");
                 Template.Modal_new_project.rendered = function () {
-                    $("#Modal_new_project").modal("show");    
+                    $("#Modal_new_project").modal("show");
                 }
                 break;
             case "user":
@@ -45,6 +51,7 @@
         },
         taskDetails: function (taskID) {
             Session.set("current_task", taskID);
+            $("#Modal_task_details").modal("show");
             Template.Modal_task_details.rendered = function () {
                 $("#Modal_task_details").modal("show");
             }
@@ -53,8 +60,9 @@
             Session.set("partner_id", partnerID);
             switch (collection) {
             case "project":
+                $("#Modal_new_project").modal("show");
                 Template.Modal_new_project.rendered = function () {
-                    $("#Modal_new_project").modal("show");                    
+                    $("#Modal_new_project").modal("show");
                 }
                 break;
             }
@@ -63,8 +71,9 @@
             Session.set("current_editing", collectionID);
             switch (collection) {
             case "client":
+                $("#Modal_edit_client").modal("show");
                 Template.Modal_edit_client.rendered = function () {
-                    $("#Modal_edit_client").modal("show");    
+                    $("#Modal_edit_client").modal("show");
                 }
                 break;
             }
@@ -76,11 +85,13 @@
     Meteor.startup(function () {
         Backbone.history.start({pushState: true});
 
-        $(document).on("click", "a:not[data-bypass]", function(event) {
+        $(document).on("click", "a", function(event) {
             event.preventDefault();
-            var href, protocol;
+            var href;
             href = $(this).attr("href");
-            Router.history.navigate(href, true);
+            Backbone.history.navigate(href, {
+                trigger: true
+            });
         });
     });
 }(jQuery));

@@ -22,11 +22,7 @@ Meteor.publish("messages", function () {
 });
 
 Meteor.publish("users", function () {
-	var users = Meteor.users.find({});
-	users.forEach(function (user) {
-		user.profile.emailHash = hex_md5(user.emails[0].address);
-	});
-	return users;
+	return Meteor.users.find({});
 });
 
 Meteor.publish("task_comments", function () {
@@ -35,6 +31,28 @@ Meteor.publish("task_comments", function () {
 
 Meteor.publish("records", function () {
 	return Records.find({});
+});
+
+Meteor.methods({
+	"md5_encode": function (string) {
+		return hex_md5(string);
+	},
+	"gravatar_url": function (gravatarMail, gravatarSize) {
+		var gravatarURL, gravatarHash, gravatarSize;
+		gravatarURL  = "http://www.gravatar.com/avatar/";
+		gravatarHash = this.md5_encode(gravatarMail);
+		gravatarSize = "?s="+size;
+		return gravatarURL+gravatarHash+gravatarSize;
+	},
+	"user_img": function (userID, gravatarSize) {
+		var gravatar, user;
+		user = Meteor.findOne({_id: userID}).fetch();
+		if( user.profile.gravatar ){
+			this.gravatar_url(user.profile.gravatar, gravatarSize);
+		}else{
+			return false;
+		}
+	}
 });
 
 Clients.allow({

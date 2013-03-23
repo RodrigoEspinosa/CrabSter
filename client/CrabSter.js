@@ -18,8 +18,6 @@ Meteor.autorun(function () {
 	Meteor.subscribe("current_editing", Session.get("current_editing"));
 });
 
-// Session.set("current_project", null);
-
 new_user = function () {
 	return Session.get("new_user");
 };
@@ -44,7 +42,17 @@ Template.aside.clients = function () {
 };
 
 Template.aside.user_list = function () {
-	return Meteor.users.find();
+	var users = Meteor.users.find({});
+	// users.forEach(function (user) {
+	// 	user.profile.image = "asadasa";
+	// 	// user.profile.name = "MOCO";
+	// });
+	// for( index in users ) {
+	// 	Meteor.call("user_img", function (error, res) {
+	// 		users[index].profile.image = res;
+	// 	});
+	// }
+	return users;
 };
 
 Template.main.show_tasks = function () {
@@ -143,11 +151,4 @@ function createRecord (collectionID, elementID) {
         createdAt: timestamp
     };
     return Records.insert(record);
-}
-function getGravatar ( email, size ) {
-	var gravatarURL, gravatarHash, gravatarSize;
-	gravatarURL  = "http://www.gravatar.com/avatar/";
-	gravatarHash = hex_md5(email);
-	gravatarSize = "?s="+size;
-	return gravatarURL+gravatarHash+gravatarSize;
 }
