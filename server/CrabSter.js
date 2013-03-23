@@ -45,13 +45,13 @@ Meteor.methods({
 		return gravatarURL+gravatarHash+gravatarSize;
 	},
 	"user_img": function (userID, gravatarSize) {
-		var gravatar, user;
-		user = Meteor.findOne({_id: userID}).fetch();
-		if( user.profile.gravatar ){
-			this.gravatar_url(user.profile.gravatar, gravatarSize);
-		}else{
-			return false;
-		}
+		// var gravatar, user;
+		// user = Meteor.findOne({_id: userID}).fetch();
+		// if( user.profile.gravatar ){
+		// 	this.gravatar_url(user.profile.gravatar, gravatarSize);
+		// }else{
+		// 	return false;
+		// }
 	}
 });
 

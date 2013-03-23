@@ -18,10 +18,15 @@
 			<ul>
 			{{#each user_list}}
 				<li>
-					<img src="{{profile.image}}">
-					<!-- <img src="/img/default-avatar.jpg"> -->
-					<span class="user_list_name">{{profile.name}}</span>
-					<span class="user_list_lastname">{{profile.lastname}}</span>
+					{{#with profile}}
+						{{#if image}}
+							<img src="{{image}}">
+						{{else}}
+							<img src="/img/default-avatar.jpg">
+						{{/if}}
+						<span class="user_list_name">{{name}}</span>
+						<span class="user_list_lastname">{{lastname}}</span>
+					{{/with}}
 				</li>
 			{{/each}}
 			</ul>

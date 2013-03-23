@@ -43,15 +43,6 @@ Template.aside.clients = function () {
 
 Template.aside.user_list = function () {
 	var users = Meteor.users.find({});
-	// users.forEach(function (user) {
-	// 	user.profile.image = "asadasa";
-	// 	// user.profile.name = "MOCO";
-	// });
-	// for( index in users ) {
-	// 	Meteor.call("user_img", function (error, res) {
-	// 		users[index].profile.image = res;
-	// 	});
-	// }
 	return users;
 };
 
