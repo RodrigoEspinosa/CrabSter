@@ -210,26 +210,24 @@
     Template.Chat_window.events = {
         "click .chat_window_title": function (event) {
             var $chat_window = $(event.target).parent(".chat_window");
-            $chat_window = $chat_window.hasClass("opened") ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
+            if ($chat_window.hasClass("opened")) {
+                closeSpecificChat(this._id);
+            } else {
+                openSpecificChat(this._id);
+            }
+            // $chat_window = $chat_window.hasClass("opened") ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
         },
         "focus .chat_window_new_text": function (event) {
             console.log(this);
             // createRecord("messages", this._id);
         },
         "submit form": function (event) {
-            // event.preventDefault();
-
-            // var new_chat_message, new_chat_message_text;
-            // new_chat_message_text = $(this).children(".new_chat_message_text").val();
-            // new_chat_message = {
-            //     from: Meteor.userId(),
-            //     text: new_chat_message_text
-            // };
-            // Messages.insert(new_chat_message);
+            
         },
         "keydown textarea": function (event) {
-            var pressedEnter, new_chat_message, new_chat_message_text;
+            var pressedEnter, pressedEsc, new_chat_message, new_chat_message_text;
             pressedEnter = event.which === 13;
+            pressedEsc = event.which === 27;
             if (pressedEnter) {
                 event.preventDefault();
                 
@@ -240,8 +238,9 @@
                     to: this._id,
                     text: new_chat_message_text
                 };
-                console.log( new_chat_message );
                 Messages.insert(new_chat_message);
+            } else if (pressedEsc) {
+                removeChat(this._id);
             }
         }
     };
