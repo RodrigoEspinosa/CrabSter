@@ -1,6 +1,6 @@
 <template name="Chat_window">
 	<div class="chat_window">
-		<h4 class="chat_window_title">{{title}}</h4>
+		{{#constant}}<h4 class="chat_window_title">{{title}}</h4>{{/constant}}
 		<div class="chat_window_messages">
 			{{#each messages}}
 			<div class="chat_window_message">

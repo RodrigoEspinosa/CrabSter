@@ -138,6 +138,8 @@ Template.Chat_dock.chats = function () {
 	return usersChats;
 };
 
+Template.Chat_dock.preserve([".chat_dock", ".chat_window"]);
+
 /* UTILS */
 function dateFormat (dateNumber) {
 	var d;
