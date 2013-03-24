@@ -1,4 +1,4 @@
-/*globals Backbone, Router, jQuery, Meteor, Template, Tasks, Clients, Session */
+/*globals alert, Backbone, Router, jQuery, Meteor, Template, Tasks, Clients, Session */
 /*jslint browser: true */
 (function ($) {
     "use strict";
@@ -20,8 +20,8 @@
         },
         userLogout: function () {
             Meteor.logout(function (Error) {
-                if( Error ) {
-                    alert( Error.response );
+                if (Error) {
+                    alert(Error.response);
                 } else {
                     Backbone.history.navigate("/");
                 }
@@ -36,13 +36,13 @@
                 $("#Modal_new_client").modal("show");
                 Template.Modal_new_client.rendered = function () {
                     $("#Modal_new_client").modal("show");
-                }
+                };
                 break;
             case "project":
                 $("#Modal_new_project").modal("show");
                 Template.Modal_new_project.rendered = function () {
                     $("#Modal_new_project").modal("show");
-                }
+                };
                 break;
             case "user":
                 Session.set("new_user", true);
@@ -54,7 +54,7 @@
             $("#Modal_task_details").modal("show");
             Template.Modal_task_details.rendered = function () {
                 $("#Modal_task_details").modal("show");
-            }
+            };
         },
         newCollectionModalWithPartner: function (collection, partnerID) {
             Session.set("partner_id", partnerID);
@@ -63,7 +63,7 @@
                 $("#Modal_new_project").modal("show");
                 Template.Modal_new_project.rendered = function () {
                     $("#Modal_new_project").modal("show");
-                }
+                };
                 break;
             }
         },
@@ -74,7 +74,7 @@
                 $("#Modal_edit_client").modal("show");
                 Template.Modal_edit_client.rendered = function () {
                     $("#Modal_edit_client").modal("show");
-                }
+                };
                 break;
             }
         }
@@ -85,7 +85,7 @@
     Meteor.startup(function () {
         Backbone.history.start({pushState: true});
 
-        $(document).on("click", "a", function(event) {
+        $(document).on("click", "a", function (event) {
             event.preventDefault();
             var href;
             href = $(this).attr("href");

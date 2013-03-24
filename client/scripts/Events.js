@@ -1,5 +1,5 @@
-/*globals Backbone, jQuery, Meteor, Template, Tasks, Clients, Session */
-/*jslint browser: true */
+/*globals Backbone, jQuery, Meteor, Template, Accounts, Projects, Task_Comments, Messages, Tasks, Clients, Session */
+/*jslint browser: true, devel: true */
 (function ($) {
     "use strict";
     
@@ -16,31 +16,35 @@
     });
     
     $(document).on("hide", ".modal", function () {
+        switch ($(this).attr("id")) {
+        case "Modal_":
+            break;
+        }
         Backbone.history.navigate("/");
     });
 
     Template.login.events = {
         "keypress .login_form": function (event) {
-            if( event.which === 13 ){
+            if (event.which === 13) {
                 event.preventDefault();
                 var login_form_email, login_form_password;
                 login_form_email = $("#login_form_email").val();
                 login_form_password = $("#login_form_password").val();
                 Meteor.loginWithPassword(login_form_email, login_form_password, function (Error) {
-                    if( Error ) {
-                        console.log( Error.error + ": "+ Error.reason + ". " + Error.description );
-                        alert( Error.reason );
+                    if (Error) {
+                        console.log(Error.error + ": " + Error.reason + ". " + Error.description);
+                        alert(Error.reason);
                     } else {
                         Backbone.history.navigate("/");
                     }
-                });    
+                });
             }
         }
     };
 
     Template.new_user.events = {
         "keypress .new_user_form": function (event) {
-            if( event.which === 13 ){
+            if (event.which === 13) {
                 event.preventDefault();
                 $(document).find(".new_user_register").click();
             }
@@ -60,13 +64,19 @@
                     lastname: new_user_lastname
                 }
             }, function (Error) {
-                if( Error ){
-                    console.log( Error.error + ": "+ Error.reason + ". " + Error.description );
-                    alert( Error.reason );
+                if (Error) {
+                    console.log(Error.error + ": " + Error.reason + ". " + Error.description);
+                    alert(Error.reason);
                 } else {
                     Backbone.history.navigate("/");
                 }
             });
+        }
+    };
+
+    Template.aside.events = {
+        "click .aside_user_list li": function (event) {
+            createNewChat(this._id);
         }
     };
 
@@ -110,8 +120,8 @@
             event.preventDefault();
             $dropmenu = $(".dropmenu");
             $self = $(".user_actions");
-            ( $self.hasClass("active") ) ? $self.removeClass("active") : $self.addClass("active");
-            ( $dropmenu.hasClass("active") ) ? $dropmenu.removeClass("active") : $dropmenu.addClass("active");
+            $self = $self.hasClass("active") ? $self.removeClass("active") : $self.addClass("active");
+            $dropmenu = $dropmenu.hasClass("active") ? $dropmenu.removeClass("active") : $dropmenu.addClass("active");
         }
     };
 
@@ -191,19 +201,23 @@
                 task: task,
                 createdAt: createdAt,
                 createdBy: createdBy
-            }
+            };
             Task_Comments.insert(comment);
             $(event.target).prev(".task_details_new_comment_text").val("");
         }
-    }
+    };
+
+    Template.Chat_dock.events = {
+        
+    };
 
     Template.Chat_window.events = {
         "click .chat_window_title": function (event) {
             var $chat_window = $(event.target).parent(".chat_window");
-            ( $chat_window.hasClass("opened") ) ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
+            $chat_window = $chat_window.hasClass("opened") ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
         },
         "focus .chat_window_new_text": function (event) {
-            console.log( this );
+            console.log(this);
             // createRecord("messages", this._id);
         },
         "submit form": function (event) {
@@ -220,7 +234,7 @@
         "keydown textarea": function (event) {
             var pressedEnter, new_chat_message, new_chat_message_text;
             pressedEnter = event.which === 13;
-            if( pressedEnter ){
+            if (pressedEnter) {
                 event.preventDefault();
                 
                 new_chat_message_text = $(event.target).val();

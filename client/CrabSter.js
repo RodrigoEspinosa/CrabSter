@@ -14,8 +14,10 @@ Meteor.autorun(function () {
 	Meteor.subscribe("users");
 	Meteor.subscribe("task_comments");
 	Meteor.subscribe("records");
+	Meteor.subscribe("current_task", Session.get("current_task"));
 	Meteor.subscribe("current_project", Session.get("current_project"));
 	Meteor.subscribe("current_editing", Session.get("current_editing"));
+	Meteor.subscribe("current_chats", Session.get("current_chats"));
 });
 
 new_user = function () {
@@ -111,9 +113,29 @@ Template.Modal_task_details.comments = function () {
 		return t;
 };
 
-Template.Chat_window.title = function () {
-	return "Rodrigo el capo";
+Template.Chat_dock.chats = function () {
+	var usersToChat = Session.get("current_chats");
+	var usersChats = new Array();
+	for (index in usersToChat) {
+		var userID = usersToChat[index];
+		var title = Meteor.users.findOne({_id: userID}).profile.name;
+		var messages = Messages.find({
+			$or: [
+				{$and: [{from: userID}, {to: Meteor.userId()}]},
+				{$and: [{from: Meteor.userId()}, {to: userID}]}
+			]
+		}).fetch();
+		usersChats[index] = {
+			title: title,
+			messages: messages
+		};
+	}
+	return usersChats;
 };
+
+// Template.Chat_window.title = function () {
+// 	return "Rodrigo el capo";
+// };
 
 Template.Chat_window.messages = function () {
 	var filter = {};
@@ -130,6 +152,21 @@ function dateFormat (dateNumber) {
 	var d;
 	d = new Date(dateNumber);
 	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2))
+}
+function createNewChat (userID) {
+	var current_chats;
+	current_chats = Session.get("current_chats");
+	if (current_chats && current_chats[0]) {
+		if ($.inArray(userID, current_chats) >= 0) {
+			return true;
+		} else {
+			current_chats.push(userID);
+		}
+	} else {
+		current_chats = [userID];
+	}
+	Session.set("current_chats", current_chats);
+	return current_chats;
 }
 function createRecord (collectionID, elementID) {
 	var record, userID, timestamp;
