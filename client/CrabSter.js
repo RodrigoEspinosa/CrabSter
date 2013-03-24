@@ -117,34 +117,25 @@ Template.Chat_dock.chats = function () {
 	var usersToChat = Session.get("current_chats");
 	var usersChats = new Array();
 	for (index in usersToChat) {
-		var userID = usersToChat[index];
-		var title = Meteor.users.findOne({_id: userID}).profile.name;
-		var messages = Messages.find({
+		var userID 	= usersToChat[index];
+		var user 	= Meteor.users.findOne({_id: userID});
+		var title 	= user.profile.name + " " + ((user.profile.lastname) ? user.profile.lastname : "");
+		var messages= Messages.find({
 			$or: [
 				{$and: [{from: userID}, {to: Meteor.userId()}]},
 				{$and: [{from: Meteor.userId()}, {to: userID}]}
 			]
 		}).fetch();
+		for( m in messages ) {
+			messages[m].createdBySelfUser = messages[m].from === Meteor.userId();
+		}
 		usersChats[index] = {
+			_id: userID,
 			title: title,
 			messages: messages
 		};
 	}
 	return usersChats;
-};
-
-// Template.Chat_window.title = function () {
-// 	return "Rodrigo el capo";
-// };
-
-Template.Chat_window.messages = function () {
-	var filter = {};
-	var m = Messages.find(filter).fetch();
-	for( index in m ) {
-		m[index].createdBySelfUser = m[index].from === Meteor.userId();
-	}
-	if( m )
-		return m;
 };
 
 /* UTILS */

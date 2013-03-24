@@ -207,10 +207,6 @@
         }
     };
 
-    Template.Chat_dock.events = {
-        
-    };
-
     Template.Chat_window.events = {
         "click .chat_window_title": function (event) {
             var $chat_window = $(event.target).parent(".chat_window");
@@ -221,15 +217,15 @@
             // createRecord("messages", this._id);
         },
         "submit form": function (event) {
-            event.preventDefault();
+            // event.preventDefault();
 
-            var new_chat_message, new_chat_message_text;
-            new_chat_message_text = $(this).children(".new_chat_message_text").val();
-            new_chat_message = {
-                from: Meteor.userId(),
-                text: new_chat_message_text
-            };
-            Messages.insert(new_chat_message);
+            // var new_chat_message, new_chat_message_text;
+            // new_chat_message_text = $(this).children(".new_chat_message_text").val();
+            // new_chat_message = {
+            //     from: Meteor.userId(),
+            //     text: new_chat_message_text
+            // };
+            // Messages.insert(new_chat_message);
         },
         "keydown textarea": function (event) {
             var pressedEnter, new_chat_message, new_chat_message_text;
@@ -241,8 +237,10 @@
                 $(event.target).val("");
                 new_chat_message = {
                     from: Meteor.userId(),
+                    to: this._id,
                     text: new_chat_message_text
                 };
+                console.log( new_chat_message );
                 Messages.insert(new_chat_message);
             }
         }
