@@ -10,12 +10,12 @@
 			<li class="client_list_header">
 				<span class="cicon">d</span>
 				<span class="client_list_header_name">{{name}}</span> 
-				<a class="aside_edit_client" href="/edit/client/{{_id}}">Edit</a>
+				<a class="aside_edit_client cicon" href="/edit/client/{{_id}}">j</a>
 				<ul class="project_list">
 					{{#each projects}}
 						<li class="client_list_items"><a href="/project/{{_id}}">{{name}}</a></li>
 					{{/each}}
-					<li class="client_list_items last"><a href="/new/project/{{_id}}">Añadir Proyecto</a></li>
+					<li class="client_list_items last cicon"><a href="/new/project/{{_id}}">h</a></li>
 				</ul>
 			</li>
 		{{/each}}
