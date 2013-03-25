@@ -3,23 +3,6 @@
 (function ($) {
     "use strict";
     
-    $(window).on("resize", function () {
-        var tasks_height, main_height, body_height;
-        body_height  = $("body").height();
-        tasks_height = body_height - 123;
-        $(".tasks").height(tasks_height);
-    });
-
-    Template.tasks.created = function () {
-        var tasks_height, main_height, body_height;
-        Template.tasks.rendered = function () {
-            console.log( "rendered" );
-            body_height  = $("body").height();
-            tasks_height = body_height - 123;
-            $(".tasks").height(tasks_height);    
-        };
-    };
-
     $(document).on("click", ".login-link-text, #login-name-link", function () {
         if ($("#login-dropdown-list").hasClass("visible")) {
             $("#login-dropdown-list").removeClass("visible");
@@ -98,15 +81,15 @@
     };
 
     Template.tasks.events = {
-        "click a.mark_done": function (event) {
+        "click .mark_done": function (event) {
             event.preventDefault();
             Tasks.update(this, {$set: {completed: true}});
         },
-        "click a.mark_undone": function (event) {
+        "click .mark_undone": function (event) {
             event.preventDefault();
             Tasks.update(this, {$set: {completed: false}});
         },
-        "click a.delete": function (event) {
+        "click .delete": function (event) {
             event.preventDefault();
             Tasks.remove(this);
         }
