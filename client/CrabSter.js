@@ -24,6 +24,11 @@ new_user = function () {
 	return Session.get("new_user");
 };
 
+Meteor.users._transform = function (doc) {
+	doc.profile.image = "asddsa";
+	return doc;
+};
+
 Template.aside.location = function () {
 	return "Montevideo";
 };
@@ -89,6 +94,14 @@ Template.tasks.tasks = function () {
 		filter.project = Session.get("current_project");
 	}
 	return Tasks.find(filter);
+};
+
+Template.task.createdBy = function () {
+	return Meteor.users.findOne({_id: this.createdBy});
+};
+
+Template.task.assignedTo = function () {
+	return Meteor.users.findOne({_id: this.assignedTo});
 };
 
 Template.task.date = function () {

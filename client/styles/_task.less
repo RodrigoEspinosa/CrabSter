@@ -34,6 +34,21 @@ li.task{
     .mark_toggler{
         display: none;
     }
+    .task_assigned_users{
+        height: 40px;
+        line-height: 40px;
+        vertical-align: middle;
+        .task_user_createdBy,
+        .task_user_assignedTo{
+            display: inline-block;
+            img{
+                border-radius: 50%;
+                display: block;
+                height: 32px;
+                width: 32px;
+            }
+        }
+    }
     .task_actions{
         .show_details{
             .cicon{

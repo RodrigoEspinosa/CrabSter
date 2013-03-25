@@ -2,6 +2,16 @@
 	<li class="task {{#if completed}}task_done{{/if}}">
 		<span class="task_title">{{title}}</span>
 		<div class="task_assigned_users">
+			<div class="task_user_createdBy">
+				{{#if createdBy}}
+				<img scr="{{createdBy.profile.image}}" title="Creado por {{createdBy.profile.name}} {{createdBy.profile.lastname}}">
+				{{/if}}
+			</div>
+			<div class="task_user_assignedTo">
+				{{#if assignedTo}}
+				<img scr="{{assignedTo.profile.image}}" title="Creado por {{assignedTo.profile.name}} {{assignedTo.profile.lastname}}">
+				{{/if}}
+			</div>
 		</div>
 		<div class="task_actions">
 			<div class="task_action show_details" style="display: inline-block;">
