@@ -44,7 +44,13 @@ Template.aside.clients = function () {
 };
 
 Template.aside.user_list = function () {
-	var users = Meteor.users.find({});
+	var users = Meteor.users.find({
+		_id: {
+			$not: {
+				Meteor.userId()
+			}
+		}
+	});
 	return users;
 };
 
@@ -161,6 +167,9 @@ function createNewChat (userID) {
 		current_chats = [userID];
 	}
 	Session.set("current_chats", current_chats);
+
+	openSpecificChat(userID);
+
 	return current_chats;
 }
 function removeChat (chatID) {
@@ -185,6 +194,9 @@ function openSpecificChat (chatID) {
 		opened_chats = [chatID];
 	}
 	Session.set("opened_chats", opened_chats);
+	if (arguments && arguments[1] && typeof arguments[1] === "function") {
+		arguments[1].call();
+	}
 	return opened_chats;
 }
 function closeSpecificChat (chatID) {

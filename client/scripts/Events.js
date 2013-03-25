@@ -3,6 +3,23 @@
 (function ($) {
     "use strict";
     
+    $(window).on("resize", function () {
+        var tasks_height, main_height, body_height;
+        body_height  = $("body").height();
+        tasks_height = body_height - 123;
+        $(".tasks").height(tasks_height);
+    });
+
+    Template.tasks.created = function () {
+        var tasks_height, main_height, body_height;
+        Template.tasks.rendered = function () {
+            console.log( "rendered" );
+            body_height  = $("body").height();
+            tasks_height = body_height - 123;
+            $(".tasks").height(tasks_height);    
+        };
+    };
+
     $(document).on("click", ".login-link-text, #login-name-link", function () {
         if ($("#login-dropdown-list").hasClass("visible")) {
             $("#login-dropdown-list").removeClass("visible");
@@ -207,25 +224,32 @@
         }
     };
 
+    Template.Chat_window.created = function () {
+        Template.Chat_window.rendered = function () {
+            
+        };
+    };
+
     Template.Chat_window.events = {
         "click .chat_window_title": function (event) {
             var $chat_window = $(event.target).parent(".chat_window");
             if ($chat_window.hasClass("opened")) {
                 closeSpecificChat(this._id);
             } else {
-                openSpecificChat(this._id);
+                openSpecificChat(this._id, function () {
+                    
+                });
             }
-            // $chat_window = $chat_window.hasClass("opened") ? $chat_window.removeClass("opened") : $chat_window.addClass("opened");
         },
         "focus .chat_window_new_text": function (event) {
             console.log(this);
             // createRecord("messages", this._id);
         },
         "submit form": function (event) {
-            
+            event.preventDefault();
         },
         "keydown textarea": function (event) {
-            var pressedEnter, pressedEsc, new_chat_message, new_chat_message_text;
+            var pressedEnter, pressedEsc, new_chat_message, new_chat_message_text, chat_window_messages;
             pressedEnter = event.which === 13;
             pressedEsc = event.which === 27;
             if (pressedEnter) {
@@ -236,9 +260,16 @@
                 new_chat_message = {
                     from: Meteor.userId(),
                     to: this._id,
-                    text: new_chat_message_text
+                    text: new_chat_message_text,
+                    createdAt: new Date()
                 };
+                
                 Messages.insert(new_chat_message);
+
+                chat_window_messages = $(event.target).parents(".chat_window_messages");
+                $(event.target).focus();
+                console.log( chat_window_messages );
+                chat_window_messages.scroll(chat_window_messages.children(".chat_window_message_text").last().scrollTop());
             } else if (pressedEsc) {
                 removeChat(this._id);
             }
