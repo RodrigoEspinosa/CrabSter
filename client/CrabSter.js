@@ -1,3 +1,8 @@
+Meteor.users._transform = function (doc) {
+	doc.profile.image = "asdsa";
+	return doc;
+};
+
 Clients 		= new Meteor.Collection("clients");
 Projects 		= new Meteor.Collection("projects");
 Tasks 			= new Meteor.Collection("tasks");
@@ -6,7 +11,6 @@ Task_Comments 	= new Meteor.Collection("task_comments");
 Records 		= new Meteor.Collection("records");
 
 Meteor.autorun(function () {
-	// Meteor.subscribe("tasks", Session.get());
 	Meteor.subscribe("clients");
 	Meteor.subscribe("projects");
 	Meteor.subscribe("tasks");
@@ -22,11 +26,6 @@ Meteor.autorun(function () {
 
 new_user = function () {
 	return Session.get("new_user");
-};
-
-Meteor.users._transform = function (doc) {
-	doc.profile.image = "asddsa";
-	return doc;
 };
 
 Template.aside.location = function () {
@@ -121,13 +120,19 @@ Template.Modal_task_details.task_title = function () {
 };
 
 Template.Modal_task_details.comments = function () {
-	var t = Task_Comments.find({task: Session.get("current_task")}).fetch();
-	for( index in t ) {
-		var user = Meteor.users.findOne({_id: t[index].createdBy}).profile.name;
-		t[index].createdBy = user;
-	}
-	if( t )
-		return t;
+	var t = Task_Comments.find({task: Session.get("current_task")})
+	t.forEach(function (task) {
+		task.createdBy = Meteor.users.findOne({_id: task.createdBy}).profile.name;
+		return task;
+	});
+	return t;
+	// var t = Task_Comments.find({task: Session.get("current_task")}).fetch();
+	// for( index in t ) {
+	// 	var user = Meteor.users.findOne({_id: t[index].createdBy}).profile.name;
+	// 	t[index].createdBy = user;
+	// }
+	// if( t )
+	// 	return t;
 };
 
 Template.Chat_dock.chats = function () {
