@@ -46,9 +46,7 @@ Template.aside.clients = function () {
 Template.aside.user_list = function () {
 	var users = Meteor.users.find({
 		_id: {
-			$not: {
-				Meteor.userId()
-			}
+			$not: Meteor.userId()
 		}
 	});
 	return users;
