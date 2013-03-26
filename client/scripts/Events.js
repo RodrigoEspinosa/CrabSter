@@ -81,19 +81,26 @@
     };
 
     Template.tasks.events = {
+        "click document": function (event) {
+            $(".task_title_editing").blur();
+        },
         "dblclick .task_title": function (event) {
             var $this = $(event.target);
-            $this.replaceWith("<input type='text' class='task_title_editing' value='"+$this.text()+"'>");
+            $this.replaceWith("<input type='text' class='task_title_editing' value='" + $this.text() + "'>");
+            $(".task_title_editing").focus();
         },
         "keypress .task_title_editing": function (event) {
             if (event.which === 13) {
                 event.preventDefault();
                 $(event.target).blur();
+            } else if (event.which === 27) {
+                event.preventDefault();
+                $(event.target).replaceWith("<span class='task_title'>" + this.text + "</span>");
             }
         },
         "blur .task_title_editing": function (event) {
             var $this = $(event.target);
-            $this.replaceWith("<span class='task_title'>"+$this.val()+"</span>");
+            Tasks.update(this, {$set: {title: $this.val()}});
         },
         "click .mark_done": function (event) {
             event.preventDefault();
@@ -245,7 +252,7 @@
         "submit form": function (event) {
             event.preventDefault();
         },
-        "keydown textarea": function (event) {
+        "keypress textarea": function (event) {
             var pressedEnter, pressedEsc, new_chat_message, new_chat_message_text, chat_window_messages;
             pressedEnter = event.which === 13;
             pressedEsc = event.which === 27;
