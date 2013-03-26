@@ -107,19 +107,19 @@
         },
         "blur .task_title_editing": function (event) {
             var $this = $(event.target);
-            Tasks.update(this, {$set: {title: $this.val()}});
+            Tasks.update({_id: this._id}, {$set: {title: $this.val()}});
         },
         "click .mark_done": function (event) {
             event.preventDefault();
-            Tasks.update(this, {$set: {completed: true}});
+            Tasks.update({_id: this._id}, {$set: {completed: true}});
         },
         "click .mark_undone": function (event) {
             event.preventDefault();
-            Tasks.update(this, {$set: {completed: false}});
+            Tasks.update({_id: this._id}, {$set: {completed: false}});
         },
         "click .delete": function (event) {
             event.preventDefault();
-            Tasks.remove(this);
+            Tasks.remove({_id: this._id});
         }
     };
 

@@ -82,6 +82,15 @@ Template.tasks.deadline = function () {
 	}
 };
 
+Template.tasks.allDone = function () {
+	var filter = {};
+	filter = {
+		project: Session.get("current_project"),
+		completed: false
+	};
+	return (Tasks.find(filter).count() > 0) ? false : true;
+};
+
 Template.tasks.tasks = function () {
 	var filter = {};
 	if( Session.get("current_project") != null ){

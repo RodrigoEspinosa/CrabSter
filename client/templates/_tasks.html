@@ -6,9 +6,16 @@
 			<span class="tasks_dates_deadline">{{deadline}}</span>
 		</div>	
 	</div>
+	{{#if allDone}}
+		<div class="alert alert-info">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<h4>¡Tareas terminadas!</h4>
+			Todas las tareas se han terminado. ¿Deseas cerrar el proyecto?
+		</div>
+	{{/if}}
 	<ul class="tasks">
-	{{#each tasks}}
-		{{> task}}
-	{{/each}}
+		{{#each tasks}}
+			{{> task}}
+		{{/each}}
 	</ul>
 </template>
