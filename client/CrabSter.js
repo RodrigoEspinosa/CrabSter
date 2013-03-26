@@ -1,8 +1,3 @@
-Meteor.users._transform = function (doc) {
-	doc.profile.image = "asdsa";
-	return doc;
-};
-
 Clients 		= new Meteor.Collection("clients");
 Projects 		= new Meteor.Collection("projects");
 Tasks 			= new Meteor.Collection("tasks");
@@ -105,6 +100,10 @@ Template.task.assignedTo = function () {
 
 Template.task.date = function () {
 	return dateFormat(this.createdAt);
+};
+
+Template.task.dateFromNow = function () {
+	return moment(this.createdAt).fromNow();
 };
 
 Template.Modal_edit_client.edit_client_name = function () {

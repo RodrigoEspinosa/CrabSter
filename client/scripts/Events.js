@@ -81,6 +81,20 @@
     };
 
     Template.tasks.events = {
+        "dblclick .task_title": function (event) {
+            var $this = $(event.target);
+            $this.replaceWith("<input type='text' class='task_title_editing' value='"+$this.text()+"'>");
+        },
+        "keypress .task_title_editing": function (event) {
+            if (event.which === 13) {
+                event.preventDefault();
+                $(event.target).blur();
+            }
+        },
+        "blur .task_title_editing": function (event) {
+            var $this = $(event.target);
+            $this.replaceWith("<span class='task_title'>"+$this.val()+"</span>");
+        },
         "click .mark_done": function (event) {
             event.preventDefault();
             Tasks.update(this, {$set: {completed: true}});
