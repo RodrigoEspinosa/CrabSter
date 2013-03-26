@@ -23,10 +23,11 @@
     
     $(document).on("hide", ".modal", function () {
         switch ($(this).attr("id")) {
-        case "Modal_":
+        case "Modal_task_details":
+            Session.set("current_task", null);
             break;
         }
-        Backbone.history.navigate("/");
+        // Backbone.history.navigate("/");
     });
 
     Template.login.events = {
@@ -82,7 +83,7 @@
 
     Template.aside.events = {
         "click .aside_user_list li": function (event) {
-            createNewChat(this._id);
+            Chat.create(this._id);
         }
     };
 
@@ -266,10 +267,10 @@
         "click .chat_window_title": function (event) {
             var $chat_window = $(event.target).parent(".chat_window");
             if ($chat_window.hasClass("opened")) {
-                closeSpecificChat(this._id);
+                Chat.close(this._id);
             } else {
-                openSpecificChat(this._id, function () {
-                    
+                Chat.open(this._id, function () {
+                    $(event.target).parent(".chat_window").find("textarea").focus();
                 });
             }
         },
@@ -300,10 +301,10 @@
 
                 chat_window_messages = $(event.target).parents(".chat_window_messages");
                 $(event.target).focus();
-                console.log( chat_window_messages );
-                chat_window_messages.scroll(chat_window_messages.children(".chat_window_message_text").last().scrollTop());
+                // chat_window_messages.scroll(chat_window_messages.children(".chat_window_message_text").last().scrollTop());
             } else if (pressedEsc) {
-                removeChat(this._id);
+                event.preventDefault();
+                Chat.remove(this._id);
             }
         }
     };

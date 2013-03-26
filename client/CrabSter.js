@@ -169,59 +169,6 @@ function dateFormat (dateNumber) {
 	d = new Date(dateNumber);
 	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2))
 }
-function createNewChat (userID) {
-	var current_chats;
-	current_chats = Session.get("current_chats");
-	if (current_chats && current_chats[0]) {
-		if ($.inArray(userID, current_chats) >= 0) {
-			return true;
-		} else {
-			current_chats.push(userID);
-		}
-	} else {
-		current_chats = [userID];
-	}
-	Session.set("current_chats", current_chats);
-
-	openSpecificChat(userID);
-
-	return current_chats;
-}
-function removeChat (chatID) {
-	var current_chats;
-	if (current_chats && current_chats[0]) {
-		closeSpecificChat(chatID);
-		current_chats = _.without(current_chats, chatID);
-	}
-	Session.set("current_chats", current_chats);
-	return current_chats;
-}
-function openSpecificChat (chatID) {
-	var opened_chats;
-	opened_chats = Session.get("opened_chats");
-	if (opened_chats && opened_chats[0]) {
-		if ($.inArray(chatID, opened_chats) >= 0) {
-			return true;
-		} else {
-			opened_chats.push(chatID);
-		}
-	} else {
-		opened_chats = [chatID];
-	}
-	Session.set("opened_chats", opened_chats);
-	if (arguments && arguments[1] && typeof arguments[1] === "function") {
-		arguments[1].call();
-	}
-	return opened_chats;
-}
-function closeSpecificChat (chatID) {
-	var opened_chats = Session.get("opened_chats");
-	if (opened_chats && opened_chats[0]) {
-		opened_chats = _.without(opened_chats, chatID);
-	}
-	Session.set("opened_chats", opened_chats);
-	return opened_chats;
-}
 function createRecord (collectionID, elementID) {
 	var record, userID, timestamp;
 	timestamp = new Date();
