@@ -126,24 +126,31 @@
     Template.new_task.events = {
         "submit form": function (event) {
             event.preventDefault();
-            var projectID, new_task_title, new_task;
+            var projectID, new_task_title, new_task_assignTo, new_task_deadline, new_task;
             projectID = Session.get("current_project");
             new_task_title = $("#new_task_title").val();
+            new_task_assignTo = ($("#new_task_assignTo").val()) ? $("#new_task_assignTo").val() : "";
+            new_task_deadline = ($("#new_task_deadline").val()) ? $("#new_task_deadline").val() : "";
             new_task = {
                 title: new_task_title,
                 project: projectID,
                 completed: false,
+                assignTo: new_task_assignTo,
+                new_task_deadline: new_task_deadline,
                 createdBy: Meteor.userId(),
                 createdAt: (new Date()).getTime()
             };
             Tasks.insert(new_task);
             
             $("#new_task_title").val("");
+            $("#new_task_assignTo").val("");
+            $("#new_task_deadline").val("");
         }
     };
 
     Template.new_task.created = function () {
         Template.new_task.rendered = function () {
+            $("#new_task_deadline").datepicker();
             $("#new_task_assignTo").typeahead({
                 source: function (query, process) {
                     var users = [];
