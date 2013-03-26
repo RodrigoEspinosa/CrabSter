@@ -10,6 +10,12 @@
             $("#login-dropdown-list").addClass("visible");
         }
     });
+
+    $(document).on("ready", function () {
+        $(document).tooltip({
+            selector: "a[title], span[title], img[title], div[title]"
+        });
+    });
     
     $(document).on("click", ".modal-cancel", function () {
         $(this).parents(".modal").modal("hide");
