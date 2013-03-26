@@ -134,6 +134,28 @@
             $("#new_task_title").val("");
         }
     };
+
+    Template.new_task.created = function () {
+        Template.new_task.rendered = function () {
+            $("#new_task_assignTo").typeahead({
+                source: function (query, process) {
+                    var users = [];
+                    Meteor.users.find({
+                        $or: [
+                            {profile: {name: query} },
+                            {profile: {lastname: query} }
+                        ]
+                    }).forEach(function (user) {
+                        if( user.profile.lastname )
+                            users.push(user.profile.name + " " + user.profile.lastname)
+                        else
+                            users.push(user.profile.name);
+                    });
+                    return users;
+                }
+            });
+        };
+    };
     
     Template.header.events = {
         "click .user_actions": function (event) {
