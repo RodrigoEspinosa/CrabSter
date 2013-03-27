@@ -108,6 +108,7 @@
         "blur .task_title_editing": function (event) {
             var $this = $(event.target);
             Tasks.update({_id: this._id}, {$set: {title: $this.val()}});
+            $(event.target).replaceWith("<span class='task_title'>" + $this.val() + "</span>");
         },
         "click .mark_done": function (event) {
             event.preventDefault();
