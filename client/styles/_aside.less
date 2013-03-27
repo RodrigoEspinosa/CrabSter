@@ -20,7 +20,7 @@
 	100%{
 		opacity: 0;
 		transform: rotate(-10deg);
-		padding-left: 15px;
+		padding-left: 10px;
 	}
 }
 @-webkit-keyframes pencilAnimation{
@@ -45,7 +45,7 @@
 	100%{
 		opacity: 0;
 		-webkit-transform: rotate(-10deg);
-		padding-left: 15px;
+		padding-left: 10px;
 	}
 }
 aside{
@@ -131,8 +131,12 @@ aside{
 							-webkit-transition:all 0.5s;
 							transition:all 0.5s;
 						}
-						&:hover{
-							padding-left: 3px;
+					}
+					&:hover{
+						.client_list_items{
+							a{
+								padding-left: 3px;
+							}
 						}
 					}
 				}
@@ -140,8 +144,8 @@ aside{
 					color: whiteSmoke;
 					padding-left: 0;
 					text-decoration: none;
-					-webkit-animation:pencilAnimation 1s infinite;
-							animation:pencilAnimation 1s infinite;
+					-webkit-animation:pencilAnimation 3s infinite;
+							animation:pencilAnimation 3s infinite;
 				}
 			}
 			&:last-of-type{
@@ -188,6 +192,17 @@ aside{
 						// Añadir proyecto, tambien es un LI
 						a{
 							font-size: 10px;
+						}
+						&:hover{
+							background: whitesmoke;
+							border-radius: 50%;
+							height: 20px;
+							width: 20px;
+							text-align: center;
+							line-height: 14px;
+							a{
+								color: #333;
+							}
 						}
 					}
 				}
