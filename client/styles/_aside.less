@@ -1,3 +1,45 @@
+@keyframes pencilAnimation{
+	0%{
+		transform: rotate(0deg);
+	}
+	20%{
+		transform: rotate(-15deg);
+	}
+	40%{
+		transform: rotate(0deg);
+	}
+	60%{
+		transform: rotate(-5deg);
+	}
+	80%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(-10deg);
+		padding-left: 25px;
+	}
+}
+@-webkit-keyframes pencilAnimation{
+	0%{
+		transform: rotate(0deg);
+	}
+	20%{
+		transform: rotate(-15deg);
+	}
+	40%{
+		transform: rotate(0deg);
+	}
+	60%{
+		transform: rotate(-5deg);
+	}
+	80%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(-10deg);
+		padding-left: 25px;
+	}
+}
 aside{
 	background: whiteSmoke;
 	box-shadow: 0 0 5px rgba(0,0,0,0.75);
@@ -83,6 +125,11 @@ aside{
 				}
 				.aside_edit_client{
 					opacity: 1;
+					color: whiteSmoke;
+					padding-left: 0;
+					text-decoration: none;
+					-webkit-animation:pencilAnimation 2s infinite;
+							animation:pencilAnimation 2s infinite;
 				}
 			}
 			&:last-of-type{
@@ -91,8 +138,8 @@ aside{
 			}
 			.cicon{
 				display: inline-block;
-				font-size: 40px;
-				line-height: 40px;
+				font-size: 30px;
+				line-height: 30px;
 			}
 			.client_list_header_name{
 				display: inline-block;
