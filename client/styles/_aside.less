@@ -1,8 +1,10 @@
 @keyframes pencilAnimation{
 	0%{
+		opacity: 0;
 		transform: rotate(0deg);
 	}
 	20%{
+		opacity: 1;
 		transform: rotate(-15deg);
 	}
 	40%{
@@ -12,18 +14,22 @@
 		transform: rotate(-5deg);
 	}
 	80%{
+		opacity: 1;
 		transform: rotate(0deg);
 	}
 	100%{
+		opacity: 0;
 		transform: rotate(-10deg);
 		padding-left: 25px;
 	}
 }
 @-webkit-keyframes pencilAnimation{
 	0%{
+		opacity: 0;
 		-webkit-transform: rotate(0deg);
 	}
 	20%{
+		opacity: 1;
 		-webkit-transform: rotate(-15deg);
 	}
 	40%{
@@ -33,9 +39,11 @@
 		-webkit-transform: rotate(-5deg);
 	}
 	80%{
+		opacity: 1;
 		-webkit-transform: rotate(0deg);
 	}
 	100%{
+		opacity: 0;
 		-webkit-transform: rotate(-10deg);
 		padding-left: 25px;
 	}
@@ -120,11 +128,15 @@ aside{
 							color: whiteSmoke;
 							text-decoration: none;
 							padding-left: 2px;
+							-webkit-transition:all 0.5s;
+							transition:all 0.5s;
+						}
+						&:hover{
+							padding-left: 3px;
 						}
 					}
 				}
 				.aside_edit_client{
-					opacity: 1;
 					color: whiteSmoke;
 					padding-left: 0;
 					text-decoration: none;
@@ -145,15 +157,16 @@ aside{
 				display: inline-block;
 				font-size: 15px;
 				font-weight: bold;
-				line-height: 40px;
+				line-height: 30px;
 				padding: 0 10px;
+				margin-bottom: 10px;
 				text-transform: uppercase;
 				vertical-align: top;
 			}
 			.aside_edit_client{
 				display: inline-block;
 				margin-left: 10px;
-				line-height: 40px;
+				line-height: 30px;
 				opacity: 0;
 				vertical-align: top;
 			}
