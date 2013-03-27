@@ -96,13 +96,20 @@
             $this.replaceWith("<input type='text' class='task_title_editing' value='" + $this.text() + "'>");
             $(".task_title_editing").focus();
         },
-        "keypress .task_title_editing": function (event) {
-            if (event.which === 13) {
+        "keydown .task_title_editing": function (event) {
+            var pressedEnter, pressedEsc, pressedTab;
+            pressedEnter = event.which === 13 || event.keyCode === 13;
+            pressedEsc = event.keyCode === 27 || event.which === 27;
+            pressedTab = event.keyCode === 9 || event.which === 9;
+            if (pressedEnter) {
                 event.preventDefault();
                 $(event.target).blur();
-            } else if (event.which === 27) {
+            } else if (pressedEsc) {
                 event.preventDefault();
                 $(event.target).replaceWith("<span class='task_title'>" + this.text + "</span>");
+            } else if (pressedTab) {
+                event.preventDefault();
+                $(event.target).parent(".task").next(".task").children(".task_title").dblclick();
             }
         },
         "blur .task_title_editing": function (event) {
