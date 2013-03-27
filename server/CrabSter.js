@@ -42,13 +42,14 @@ Meteor.publish("records", function () {
 
 Meteor.methods({
 	"md5_encode": function (string) {
-		return hex_md5(string);
+		// return hex_md5(string);
 	},
 	"gravatar_url": function (gravatarMail, gravatarSize) {
-		var gravatarURL, gravatarHash, gravatarSize;
+		var gravatarURL, gravatarHash;
 		gravatarURL  = "http://www.gravatar.com/avatar/";
-		gravatarHash = this.md5_encode(gravatarMail);
-		gravatarSize = "?s="+size;
+		// gravatarHash = this.md5_encode(gravatarMail);
+		gravatarHash = "71f946b4fdeb8a14e43297b2708e4c3a";
+		gravatarSize = "?s="+gravatarSize;
 		return gravatarURL+gravatarHash+gravatarSize;
 	},
 	"user_img": function (userID, gravatarSize) {
