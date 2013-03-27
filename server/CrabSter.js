@@ -22,7 +22,14 @@ Meteor.publish("messages", function () {
 });
 
 Meteor.publish("users", function () {
-	return Meteor.users.find({});
+	return Meteor.users.find({
+		
+	}, {
+		transform: function(doc) {
+			doc.profile.lastname = "XxXxX";
+			return doc;
+		}
+	});
 });
 
 Meteor.publish("task_comments", function () {
@@ -52,6 +59,14 @@ Meteor.methods({
 		// }else{
 		// 	return false;
 		// }
+	},
+	"project_remove": function (projectID) {
+		Tasks.remove({
+        	project: projectID
+        });
+        Projects.remove({
+        	_id: projectID
+        });
 	}
 });
 

@@ -33,10 +33,12 @@
             $("#new_task_deadline").datepicker();
             $("#new_task_assignTo").typeahead({
                 source: function (query, process) {
-                    var users = [];
+                    var users = [], re;
+                    // re = new RegExp(query, "i");
+                    // console.log(re);
                     Meteor.users.find({
                         $or: [
-                            {profile: {name: query} },
+                            {profile: {name: query } },
                             {profile: {lastname: query} }
                         ]
                     }).forEach(function (user) {

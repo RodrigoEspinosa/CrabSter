@@ -47,6 +47,12 @@ Template.aside.user_list = function () {
 		_id: {
 			$not: Meteor.userId()
 		}
+	}, {
+		transform: function (user) {
+			user.profile.name = "ASDDSA";
+			user.profile.lastname = "aaaaaaaa2;";
+			return user;
+		}
 	});
 	return users;
 };
