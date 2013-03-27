@@ -5,13 +5,13 @@
 	}
 	20%{
 		opacity: 1;
-		transform: rotate(-15deg);
+		transform: rotate(-6deg);
 	}
 	40%{
 		transform: rotate(0deg);
 	}
 	60%{
-		transform: rotate(-5deg);
+		transform: rotate(-2deg);
 	}
 	80%{
 		opacity: 1;
@@ -19,7 +19,7 @@
 	}
 	100%{
 		opacity: 0;
-		transform: rotate(-10deg);
+		transform: rotate(-4deg);
 		padding-left: 10px;
 	}
 }
@@ -30,13 +30,13 @@
 	}
 	20%{
 		opacity: 1;
-		-webkit-transform: rotate(-15deg);
+		-webkit-transform: rotate(-6deg);
 	}
 	40%{
 		-webkit-transform: rotate(0deg);
 	}
 	60%{
-		-webkit-transform: rotate(-5deg);
+		-webkit-transform: rotate(-2deg);
 	}
 	80%{
 		opacity: 1;
@@ -44,7 +44,7 @@
 	}
 	100%{
 		opacity: 0;
-		-webkit-transform: rotate(-10deg);
+		-webkit-transform: rotate(-4deg);
 		padding-left: 10px;
 	}
 }
@@ -132,13 +132,6 @@ aside{
 							transition:all 0.5s;
 						}
 					}
-					&:hover{
-						.client_list_items{
-							a{
-								padding-left: 3px;
-							}
-						}
-					}
 				}
 				.aside_edit_client{
 					color: whiteSmoke;
@@ -189,21 +182,23 @@ aside{
 						line-height: 20px;
 					}
 					&.last{
-						// Añadir proyecto, tambien es un LI
+						height: 20px;
+						width: 20px;
+						text-align: center;
+						line-height: 14px;
 						a{
 							font-size: 10px;
 						}
 						&:hover{
 							background: whitesmoke;
 							border-radius: 50%;
-							height: 20px;
-							width: 20px;
-							text-align: center;
-							line-height: 14px;
 							a{
 								color: #333;
 							}
 						}
+					}
+					&:hover{
+						padding-left: 3px;
 					}
 				}
 			}
