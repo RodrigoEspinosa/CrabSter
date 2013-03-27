@@ -27,10 +27,10 @@
         "submit form": function (event) {
             event.preventDefault();
         },
-        "keypress textarea": function (event) {
+        "keydown textarea": function (event) {
             var pressedEnter, pressedEsc, new_chat_message, new_chat_message_text, chat_window_messages;
-            pressedEnter = event.which === 13;
-            pressedEsc = event.which === 27;
+            pressedEnter = event.which === 13 || event.keyCode === 13;
+            pressedEsc = event.which === 27 || event.keyCode === 27;
             if (pressedEnter) {
                 event.preventDefault();
                 
