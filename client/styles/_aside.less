@@ -133,12 +133,25 @@ aside{
 					}
 				}
 				.aside_edit_client{
+					width: 20px;
+					height: 20px;
 					color: whiteSmoke;
 					padding-left: 0;
+					position: relative;
 					text-decoration: none;
+					-webkit-transition: all 0.3s;
+					   -moz-transition: all 0.3s;
+					     -o-transition: all 0.3s;
+							transition: all 0.3s;
+					-webkit-animation: pencilAnimation 3s infinite;
+							animation: pencilAnimation 3s infinite;
 					&:hover{
-						-webkit-animation:pencilAnimation 3s infinite;
-								animation:pencilAnimation 3s infinite;
+						-webkit-animation: none;
+								animation: none;
+						opacity: 1;
+						-webkit-transform: rotate(61deg);
+								transform: rotate(61deg);
+						top: 10px;
 					}
 				}
 			}
