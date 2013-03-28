@@ -31,8 +31,26 @@
 	.tasks_actions{
 		display: inline-block;
 		position: absolute;
-		right: 25px;
+		right: 20px;
 		top: 14px;
+		.edit_project{
+			width: 20px;
+			height: 20px;
+			color: #333;
+			font-size: 25px;
+			display: inline-block;
+			position: relative;
+			text-decoration: none;
+			-webkit-transition: all 0.2s;
+			   -moz-transition: all 0.2s;
+			     -o-transition: all 0.2s;
+					transition: all 0.2s;
+			&:hover{
+				-webkit-transform: rotate(61deg);
+						transform: rotate(61deg);
+				top: 10px;
+			}
+		}
 	}
 }
 ul.tasks{
