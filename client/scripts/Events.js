@@ -13,7 +13,7 @@
 
     $(document).on("ready", function () {
         $(document).tooltip({
-            selector: "a[title], span[title], img[title], div[title]"
+            selector: "a[title], span[title], img[title], div[title], input[title]"
         });
     });
     
