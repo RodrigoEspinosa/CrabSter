@@ -29,6 +29,8 @@ Template.tasks.allDone = function () {
 		project: Session.get("current_project"),
 		completed: false
 	};
+	if (Tasks.find({project: Session.get("current_project")}).count() === 0)
+		return false;
 	return (Tasks.find(filter).count() > 0) ? false : true;
 };
 
