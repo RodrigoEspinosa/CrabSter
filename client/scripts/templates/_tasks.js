@@ -28,8 +28,12 @@ Template.tasks.dueDate = function () {
 	project = Projects.find({"_id": Session.get("current_project")}).fetch();
 	if( project[0] && project[0].createdAt ) {
 		date = project[0].createdAt;
-		days = 0;
-		days = moment(date).startOf("day").fromNow(true);
+		days = moment().diff(date, "days");
+		weeks = 0;
+		while (days > 7) {
+			days = days - 7;
+			weeks = weeks + 1;
+		}
 		dueDate = {
 			days: days,
 			weeks: weeks
