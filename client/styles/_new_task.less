@@ -3,12 +3,20 @@ form#new_task{
 	   -moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;
 			box-sizing: border-box;
+	background: #333;
 	display: inline-block;
 	margin: 0;
-	padding: 0 20px;
+	position: relative;
 	vertical-align: top;
-	width: 80%;
+	width: 100%;
+	legend{
+		color: whiteSmoke;
+		padding: 20px;
+		border-bottom: 1px solid #222;
+		box-shadow: 0 1px 0 #444;
+	}
 	#new_task_title{
+		margin-left: 20px;
 		display: block;
 		width: -webkit-calc(~"70% + 18px");
 		width:    -moz-calc(~"70% + 18px");
@@ -16,9 +24,19 @@ form#new_task{
 		width: 		   calc(~"70% + 18px");
 	}
 	#new_task_assignTo{
+		margin-left: 20px;
 		width: 35%;
 	}
 	#new_task_deadline{
 		width: 35%;
+	}
+	.cicon{
+		border: none;
+		background: none;
+		color: whiteSmoke;
+		font-size: 30px;
+		position: absolute;
+		top: 30px;
+		right: 15px;
 	}
 }
