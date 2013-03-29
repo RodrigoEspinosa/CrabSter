@@ -35,11 +35,11 @@
         },
         "click .mark_done": function (event) {
             event.preventDefault();
-            Tasks.update({_id: this._id}, {$set: {completed: true}});
+            Tasks.update({_id: this._id}, {$set: {completed: true, closedBy: Meteor.userId() }});
         },
         "click .mark_undone": function (event) {
             event.preventDefault();
-            Tasks.update({_id: this._id}, {$set: {completed: false}});
+            Tasks.update({_id: this._id}, {$set: {completed: false, closedBy: null }});
         },
         "click .delete": function (event) {
             event.preventDefault();

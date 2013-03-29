@@ -25,9 +25,9 @@ Meteor.publish("users", function () {
 	return Meteor.users.find({
 		
 	}, {
-		transform: function(doc) {
-			doc.profile.lastname = "XxXxX";
-			return doc;
+		transform: function(user) {
+			user.profile.image = "img/default.jpg";
+			return user;
 		}
 	});
 });
