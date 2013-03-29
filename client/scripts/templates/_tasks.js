@@ -23,6 +23,15 @@ Template.tasks.deadline = function () {
 	}
 };
 
+Template.tasks.dueDate = function () {
+	var project, date;
+	project = Projects.find({"_id": Session.get("current_project")}).fetch();
+	if( project[0] && project[0].deadline ) {
+		var date = project[0].createdAt;
+		return moment(date).fromNow();
+	}
+};
+
 Template.tasks.allDone = function () {
 	var filter = {};
 	filter = {

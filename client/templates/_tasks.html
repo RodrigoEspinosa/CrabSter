@@ -1,9 +1,12 @@
 <template name="tasks">
-	<div class="task_header">
+	<div class="tasks_header">
 		<span class="tasks_title">{{project_name}}</span>
 		<div class="tasks_dates">
 			<span class="tasks_dates_createdAt">{{createdAt}}</span>
 			<span class="tasks_dates_deadline">{{deadline}}</span>
+		</div>
+		<div class="tasks_dueDate">
+			{{dueDate}}
 		</div>
 		<div class="tasks_actions">
 			<a class="edit_project cicon" href="/edit/project/{{_id}}">j</a>

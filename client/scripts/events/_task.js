@@ -23,10 +23,12 @@
             } else if (pressedEsc) {
                 event.preventDefault();
                 $(event.target).val( this.title ).blur();
-                // $(event.target).replaceWith("<span class='task_title'>" + this.title + "</span>");
             } else if (pressedTab) {
                 event.preventDefault();
-                $(event.target).parent(".task").next(".task").children(".task_title").dblclick();
+                var $this = $(event.target);
+                $this.blur();
+                console.log($this);
+                $this.parent(".task").next(".task").children(".task_title").dblclick();
             }
         },
         "blur .task_title_editing": function (event) {
