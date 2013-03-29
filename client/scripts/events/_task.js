@@ -22,7 +22,8 @@
                 $(event.target).blur();
             } else if (pressedEsc) {
                 event.preventDefault();
-                $(event.target).replaceWith("<span class='task_title'>" + this.text + "</span>");
+                $(event.target).val( this.title ).blur();
+                // $(event.target).replaceWith("<span class='task_title'>" + this.title + "</span>");
             } else if (pressedTab) {
                 event.preventDefault();
                 $(event.target).parent(".task").next(".task").children(".task_title").dblclick();
