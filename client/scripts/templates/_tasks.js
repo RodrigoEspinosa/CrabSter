@@ -24,11 +24,17 @@ Template.tasks.deadline = function () {
 };
 
 Template.tasks.dueDate = function () {
-	var project, date;
+	var project, date, days, weeks, dueDate;
 	project = Projects.find({"_id": Session.get("current_project")}).fetch();
 	if( project[0] && project[0].createdAt ) {
-		var date = project[0].createdAt;
-		return moment(date).startOf("day").fromNow();
+		date = project[0].createdAt;
+		days = 0;
+		days = moment(date).startOf("day").fromNow(true);
+		dueDate = {
+			days: days,
+			weeks: weeks
+		};
+		return dueDate;
 	}
 };
 
