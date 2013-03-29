@@ -11,7 +11,15 @@
 		</section>
 	</header>
 	<ul class="dropmenu">
-		<li><span class="user_list_name">{{currentUser.profile.name}}</span><span class="user_list_lastname">{{currentUser.profile.lastname}}</span></li>
+		<li class="user_list">
+			{{#if image}}
+				<img src="{{image}}">
+			{{else}}
+				<img src="/img/default-avatar.jpg">
+			{{/if}}
+			<span class="user_list_name">{{currentUser.profile.name}}</span>
+			<span class="user_list_lastname">{{currentUser.profile.lastname}}</span>
+		</li>
 		{{#if true}}
 		<li><a href="/new/client">Add New Client</a></li>
 		{{/if}}
