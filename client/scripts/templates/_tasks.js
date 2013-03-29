@@ -1,3 +1,6 @@
+Template.tasks._id = function () {
+	return Session.get("current_project");
+};
 Template.tasks.project_name = function () {
 	var project;
 	project = Projects.find({"_id": Session.get("current_project")}).fetch();
