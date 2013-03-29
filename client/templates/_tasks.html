@@ -5,10 +5,12 @@
 			<span class="tasks_dates_createdAt">{{createdAt}}</span>
 			<span class="tasks_dates_deadline">{{deadline}}</span>
 		</div>
+		{{#if dueDate}}
 		<div class="tasks_dueDate">
 			<div><span>{{dueDate.weeks}}</span>WEEKS</div>
 			<div><b>&amp;</b><span>{{dueDate.days}}</span>DAYS</div>
 		</div>
+		{{/if}}
 		<div class="tasks_actions">
 			<a class="edit_project cicon" href="/edit/project/{{_id}}">j</a>
 			<div class="delete recycle-bin" title="Delete">

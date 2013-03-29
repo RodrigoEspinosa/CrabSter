@@ -29,9 +29,9 @@ Template.tasks.deadline = function () {
 Template.tasks.dueDate = function () {
 	var project, date, days, weeks, dueDate;
 	project = Projects.find({"_id": Session.get("current_project")}).fetch();
-	if( project[0] && project[0].createdAt ) {
-		date = project[0].createdAt;
-		days = moment().diff(date, "days");
+	if (project[0] && project[0].deadline) {
+		date = project[0].deadline;
+		days = moment(date).diff(moment(), "days");
 		weeks = 0;
 		while (days > 7) {
 			days = days - 7;
@@ -42,6 +42,8 @@ Template.tasks.dueDate = function () {
 			weeks: weeks
 		};
 		return dueDate;
+	} else {
+		return false;
 	}
 };
 

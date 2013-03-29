@@ -2,18 +2,21 @@
 	<div id="Modal_new_project" class="modal hide fade">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			<h3>Añadir un nuevo proyecto</h3>
+			<h3>New project</h3>
 		</div>
 		<div class="modal-body">
 			<form id="new_client" action="">
 				<fieldset>
-					<input id="new_project_name" placeholder="Nombre" type="text">
+					<label for="new_project_name">Project name</label>
+					<input id="new_project_name" placeholder="Project name..." type="text">
+					<label for="new_project_deadline">Deadline</label>
+					<input id="new_project_deadline" placeholder="Is there a deadline?" type="text">
 				</fieldset>
 			</form>
 		</div>
 		<div class="modal-footer">
 			<a id="new_project_cancel" href="#" class="btn modal-cancel">Cancelar</a>
-			<a id="new_project_save" href="#" class="btn btn-primary">Guardar</a>
+			<a id="new_project_save" href="#" class="btn btn-primary cicon">e</a>
 		</div>
 	</div>
 </template>
