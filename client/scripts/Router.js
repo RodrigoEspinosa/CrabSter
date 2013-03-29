@@ -70,6 +70,12 @@
         editCollectionModal: function (collection, collectionID) {
             Session.set("current_editing", collectionID);
             switch (collection) {
+            case "project":
+                $("#Modal_edit_project").modal("show");
+                Template.Modal_edit_client.rendered = function () {
+                    $("#Modal_edit_project").modal("show");
+                };
+                break;
             case "client":
                 $("#Modal_edit_client").modal("show");
                 Template.Modal_edit_client.rendered = function () {
