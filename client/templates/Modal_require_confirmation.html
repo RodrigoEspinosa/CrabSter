@@ -1,0 +1,15 @@
+<template name="Modal_require_confirmation">
+	<div id="Modal_require_confirmation" class="modal hide fade">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>{{title}}</h3>
+		</div>
+		<div class="modal-body">
+			{{content}}
+		</div>
+		<div class="modal-footer">
+			<a class="btn modal-cancel require_confirmation_cancel" href="#">No</a>
+			<a class="btn btn-danger require_confirmation_confirm" href="#">Yes!</a>
+		</div>
+	</div>
+</template>

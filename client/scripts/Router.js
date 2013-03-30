@@ -51,10 +51,9 @@
         },
         taskDetails: function (taskID) {
             Session.set("current_task", taskID);
-            $("#Modal_task_details").modal("show");
-            Template.Modal_task_details.rendered = function () {
+            Utils.onReady(function () {
                 $("#Modal_task_details").modal("show");
-            };
+            });
         },
         newCollectionModalWithPartner: function (collection, partnerID) {
             Session.set("partner_id", partnerID);
@@ -71,10 +70,9 @@
             Session.set("current_editing", collectionID);
             switch (collection) {
             case "project":
-                $("#Modal_edit_project").modal("show");
-                Template.Modal_edit_client.rendered = function () {
+                Utils.onReady(function () {
                     $("#Modal_edit_project").modal("show");
-                };
+                });
                 break;
             case "client":
                 $("#Modal_edit_client").modal("show");

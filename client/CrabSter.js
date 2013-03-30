@@ -17,6 +17,8 @@ Meteor.autorun(function () {
 	Meteor.subscribe("current_project", Session.get("current_project"));
 	Meteor.subscribe("current_editing", Session.get("current_editing"));
 	Meteor.subscribe("current_chats", Session.get("current_chats"));
+	Meteor.subscribe("current_confirmation_title", Session.get("current_confirmation_title"));
+	Meteor.subscribe("current_confirmation_content", Session.get("current_confirmation_content"));
 });
 
 new_user = function () {
@@ -24,9 +26,33 @@ new_user = function () {
 };
 
 /* UTILS */
+window.Utils = {
+	onReady: function (fn) {
+		setTimeout( function () {
+			fn.call();
+		}, 200);
+	},
+	requireConfirmation: function (obj) {
+		Session.set("current_confirmation_title", obj.title);
+		Session.set("current_confirmation_content", obj.content);
+		$(document).off("click", ".require_confirmation_confirm");
+		if (obj.confirm && typeof obj.confirm === "function") {
+			$(document).on("click", ".require_confirmation_confirm", function (event) {
+				event.preventDefault();
+				obj.confirm.call();
+				$(this).parents(".modal").modal("hide");
+			});
+		}
+		Meteor.defer(function () {
+			$("#Modal_require_confirmation").modal("show");
+		});
+	}
+};
+
 function dateFormat (dateNumber) {
 	return moment(dateNumber).format("DD.MM.YY");
 }
+
 function createRecord (collectionID, elementID) {
 	var record, userID, timestamp;
 	timestamp = new Date();

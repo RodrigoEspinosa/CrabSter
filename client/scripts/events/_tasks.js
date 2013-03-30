@@ -6,7 +6,19 @@
 	Template.tasks.events = {
         "click .delete": function (event) {
             event.preventDefault();
-            Meteor.call("project_remove", this._id);
+            var projectID = Session.get("current_project");
+            Utils.requireConfirmation({
+            	title: "Are you sure?",
+            	content: "This is kind'a serious!",
+            	confirm: function () {
+            		Meteor.call("project_remove", projectID);
+            		Session.set("current_project", null);
+            	},
+            	cancel: function () {
+
+            	}
+            });
+            
         }
 	};
 }(jQuery));
