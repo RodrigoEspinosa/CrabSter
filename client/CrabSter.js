@@ -25,9 +25,7 @@ new_user = function () {
 
 /* UTILS */
 function dateFormat (dateNumber) {
-	var d;
-	d = new Date(dateNumber);
-	return d.getDate()+"."+(d.getMonth()+1)+"."+(d.getFullYear().toString().substr(2))
+	return moment(dateNumber).format("DD.MM.YY");
 }
 function createRecord (collectionID, elementID) {
 	var record, userID, timestamp;
