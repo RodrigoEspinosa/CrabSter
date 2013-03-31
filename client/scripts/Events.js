@@ -29,9 +29,15 @@
         case "Modal_task_details":
             Session.set("current_task", null);
             break;
+        case "Modal_new_project":
+            Session.set("partner_id", null);
+            break;
         case "Modal_edit_client":
         case "Modal_edit_project":
             Session.set("current_editing", null);
+            break;
+        case "Modal_require_confirmation":
+            Session.set("current_confirmation_content", null);
             break;
         }
     });

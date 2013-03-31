@@ -3,6 +3,7 @@
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<h3>{{task_title}}</h3>
+			<p>Created on <span class="date_with_title" title="{{createdAtAgo}}">{{createdAt}}</span> by {{createdBy}}</p>
 		</div>
 		<div class="modal-body">
 			{{#each comments}}
@@ -13,7 +14,7 @@
 			{{/each}}
 		</div>
 		<div class="modal-footer">
-			<input class="task_details_new_comment_text input-xlarge" type="text" style="vertical-align: top;">
+			<input class="task_details_new_comment_text input-xlarge" type="text" style="vertical-align: top;" placeholder="Write your comment...">
 			<button class="task_details_new_comment_save btn btn-primary">Enviar</button>
 		</div>
 	</div>

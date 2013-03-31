@@ -17,6 +17,7 @@
         },
         index: function () {
             Session.set("current_task", null);
+            Session.set("partner_id", null);
             Session.set("current_project", null);
             Session.set("current_editing", null);
         },
@@ -61,10 +62,9 @@
             Session.set("partner_id", partnerID);
             switch (collection) {
             case "project":
-                $("#Modal_new_project").modal("show");
-                Template.Modal_new_project.rendered = function () {
+                Utils.onReady(function () {
                     $("#Modal_new_project").modal("show");
-                };
+                });
                 break;
             }
         },
@@ -77,10 +77,9 @@
                 });
                 break;
             case "client":
-                $("#Modal_edit_client").modal("show");
-                Template.Modal_edit_client.rendered = function () {
+                Utils.onReady(function () {
                     $("#Modal_edit_client").modal("show");
-                };
+                });
                 break;
             }
         }

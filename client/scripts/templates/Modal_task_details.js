@@ -5,8 +5,26 @@
 
 	Template.Modal_task_details.task_title = function () {
 		var t = Tasks.findOne({_id: Session.get("current_task")});
-		if( t )
+		if (t)
 			return t.title;
+	};
+	Template.Modal_task_details.createdAt = function () {
+		var t = Tasks.findOne({_id: Session.get("current_task")});
+		if (t)
+			return Utils.dateFormat(t.createdAt);
+	};
+	Template.Modal_task_details.createdAtAgo = function () {
+		var t = Tasks.findOne({_id: Session.get("current_task")});
+		if (t)
+			return moment(t.createdAt).fromNow();
+	};
+	Template.Modal_task_details.createdBy = function () {
+		var t = Tasks.findOne({_id: Session.get("current_task")}), user;
+		if (t) {
+			user = Meteor.users.findOne({_id: t.createdBy});
+			if (user)
+				return user.profile.name + " " + user.profile.lastname;
+		}
 	};
 	Template.Modal_task_details.comments = function () {
 		var t = Task_Comments.find({task: Session.get("current_task")}, {
