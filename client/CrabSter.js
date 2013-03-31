@@ -32,6 +32,9 @@ window.Utils = {
 			fn.call();
 		}, 200);
 	},
+	dateFormat: function (date) {
+		return moment(date).format("DD.MM.YY");
+	},
 	requireConfirmation: function (obj) {
 		Session.set("current_confirmation_title", obj.title);
 		Session.set("current_confirmation_content", obj.content);
@@ -46,11 +49,17 @@ window.Utils = {
 		Meteor.defer(function () {
 			$("#Modal_require_confirmation").modal("show");
 		});
+	},
+	pressedEnter: function (event) {
+		return (event.which || event.keyCode) === 13;
 	}
 };
-
-function dateFormat (dateNumber) {
-	return moment(dateNumber).format("DD.MM.YY");
+/* COMPATIBILITY LAYER */
+window.dateFormat = function (date) {
+	return Utils.dateFormat(date);
+}
+window.pressedEnter = function (event) {
+	return Utils.pressedEnter(event);
 }
 
 function createRecord (collectionID, elementID) {

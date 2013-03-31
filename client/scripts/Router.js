@@ -16,7 +16,9 @@
             "edit/:collection/:collectionID": "editCollectionModal"
         },
         index: function () {
+            Session.set("current_task", null);
             Session.set("current_project", null);
+            Session.set("current_editing", null);
         },
         userLogout: function () {
             Meteor.logout(function (Error) {

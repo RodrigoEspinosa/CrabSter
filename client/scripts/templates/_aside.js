@@ -26,11 +26,11 @@ Template.aside.user_list = function () {
 		transform: function (user) {
 			// user.profile.image = Meteor.call("gravatar_url", user.emails[0].address, 200);
 			// console.log(user.profile.image);
-			console.log(Meteor.call("gravatar_url", user.emails[0].address, 200));
+			// console.log(Meteor.call("gravatar_url", user.emails[0].address, 200));
 			// return user;
-			Meteor.call("gravatar_url", user.emails[0].address, 200, function (error, result) {
+			// Meteor.call("gravatar_url", user.emails[0].address, 200, function (error, result) {
 				// console.log( result );
-			});
+			// });
 			return user;
 		}
 	});

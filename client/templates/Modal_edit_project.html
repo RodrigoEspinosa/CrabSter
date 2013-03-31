@@ -3,11 +3,18 @@
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<h3>Editar proyecto</h3>
+			<p>Created on <span title="{{edit_project_createdAtAgo}}">{{edit_project_createdAt}}</span> by {{edit_project_createdBy}}</p>
 		</div>
 		<div class="modal-body">
+
 			<form id="edit_client" action="">
 				<fieldset>
-					<input id="edit_project_name" placeholder="Nombre del proyecto" type="text" value="{{edit_project_name}}">
+					<div>
+						<input id="edit_project_name" placeholder="Project name" type="text" value="{{edit_project_name}}">
+					</div>
+					<div>
+						<input id="edit_project_deadline" placeholder="Deadline" type="text" value="{{edit_project_deadline}}">
+					</div>
 				</fieldset>
 			</form>
 		</div>

@@ -30,7 +30,9 @@
 
     Template.new_task.created = function () {
         Template.new_task.rendered = function () {
-            $("#new_task_deadline").datepicker();
+            $("#new_task_deadline").datepicker({
+                format: "dd/mm/yyyy"
+            });
             $("#new_task_assignTo").typeahead({
                 source: function (query, process) {
                     var users = [], re;

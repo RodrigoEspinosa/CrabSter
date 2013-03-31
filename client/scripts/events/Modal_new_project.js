@@ -29,7 +29,9 @@
 
     Template.Modal_new_project.created = function () {
         Template.Modal_new_project.rendered = function () {
-            $("#new_project_deadline").datepicker();    
+            $("#new_project_deadline").datepicker({
+                format: "dd/mm/yyyy"
+            });
         };
     };
 }(jQuery));
