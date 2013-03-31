@@ -22,11 +22,17 @@
     });
     
     $(document).on("hide", ".modal", function () {
+        if (history && typeof history.back === "function") {
+            history.back();
+        }
         switch ($(this).attr("id")) {
         case "Modal_task_details":
             Session.set("current_task", null);
             break;
+        case "Modal_edit_client":
+        case "Modal_edit_project":
+            Session.set("current_editing", null);
+            break;
         }
-        // Backbone.history.navigate("/");
     });
 }(jQuery));

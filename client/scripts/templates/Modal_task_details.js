@@ -2,17 +2,20 @@
 /*jslint browser: true, devel: true */
 (function ($) {
     "use strict";
-    
+
 	Template.Modal_task_details.task_title = function () {
 		var t = Tasks.findOne({_id: Session.get("current_task")});
 		if( t )
 			return t.title;
 	};
 	Template.Modal_task_details.comments = function () {
-		var t = Task_Comments.find({task: Session.get("current_task")}, function (comment) {
-			var user = Meteor.user.findOne({_id: comment.createdBy});
-			if (user) {
-				comment.createdBy = user.name + " " + user.lastname;
+		var t = Task_Comments.find({task: Session.get("current_task")}, {
+			transform: function (comment) {
+				var user = Meteor.user.findOne({_id: comment.createdBy});
+				if (user) {
+					comment.createdBy = user.name + " " + user.lastname;
+					return comment;
+				}
 				return comment;
 			}
 		});
