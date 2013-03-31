@@ -6,8 +6,9 @@
 		</div>
 		<div class="modal-body">
 			{{#each comments}}
-				<div cass="">
-					{{createdBy}}<span>{{text}}</span>
+				<div class="task_details_comment">
+					<div class="task_details_comment_createdBy">{{createdBy}}</div>
+					<div class="task_details_comment_text">{{text}}</div>
 				</div>
 			{{/each}}
 		</div>

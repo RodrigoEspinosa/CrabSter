@@ -11,18 +11,14 @@
 	Template.Modal_task_details.comments = function () {
 		var t = Task_Comments.find({task: Session.get("current_task")}, {
 			transform: function (comment) {
-				var user = Meteor.user.findOne({_id: comment.createdBy});
+				var user = Meteor.users.findOne({_id: comment.createdBy});
 				if (user) {
-					comment.createdBy = user.name + " " + user.lastname;
+					comment.createdBy = user.profile.name + " " + user.profile.lastname;
 					return comment;
 				}
 				return comment;
 			}
 		});
-		// t.forEach(function (task) {
-		// 	task.createdBy = Meteor.users.findOne({_id: task.createdBy}).profile.name;
-		// 	return task;
-		// });
 		return t;
 	};
 }(jQuery));
