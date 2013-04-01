@@ -21,8 +21,7 @@
             }
         },
         "focus .chat_window_new_text": function (event) {
-            console.log(this);
-            // createRecord("messages", this._id);
+            Utils.createRecord("messages", this._id);
         },
         "submit form": function (event) {
             event.preventDefault();
@@ -40,6 +39,7 @@
                     from: Meteor.userId(),
                     to: this._id,
                     text: new_chat_message_text,
+                    readed: false,
                     createdAt: new Date()
                 };
                 

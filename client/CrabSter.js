@@ -35,6 +35,26 @@ window.Utils = {
 	dateFormat: function (date) {
 		return moment(date).format("DD.MM.YY");
 	},
+	createRecord: function (collectionID, elementID) {
+		var record, userID, timestamp, record_exists;
+		userID = Meteor.userId();
+	    record = {
+	        user_id: userID,
+	        collection_id: collectionID,
+	        element_id: elementID
+	    };
+	    record_exists = Records.find({
+	    	user_id: userID,
+	    	collection_id: collectionID,
+	    	element_id: elementID
+	    }).count() > 0;
+	    if (record_exists) {
+	    	return Records.update(record, {$set: {createdAt: new Date()}});
+	    } else {
+	    	record.createdAt = new Date();
+	    	return Records.insert(record);	
+	    }
+	},
 	requireConfirmation: function (obj) {
 		Session.set("current_confirmation_title", obj.title);
 		Session.set("current_confirmation_content", obj.content);
@@ -63,14 +83,5 @@ window.pressedEnter = function (event) {
 }
 
 function createRecord (collectionID, elementID) {
-	var record, userID, timestamp;
-	timestamp = new Date();
-	userID = Meteor.userId();
-    record = {
-        user_id: userID,
-        collection_id: collectionID,
-        element_id: elementID,
-        createdAt: timestamp
-    };
-    return Records.insert(record);
+	return Utils.createRecord(collectionID, elementID);
 }
