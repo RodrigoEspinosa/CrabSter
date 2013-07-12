@@ -12,7 +12,7 @@
             event.preventDefault();
             var new_project_name, new_project_deadline, new_project;
             new_project_name = $("#new_project_name").val();
-            new_project_deadline = moment($("#new_project_deadline").val(), "DD/MM/YYYY").toDate();
+            new_project_deadline = ($("#new_project_deadline").val() !== "") ? moment($("#new_project_deadline").val(), "DD/MM/YYYY").toDate() : "";
             new_project = {
                 name: new_project_name,
                 client: Session.get("partner_id"),
