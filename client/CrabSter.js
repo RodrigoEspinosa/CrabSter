@@ -13,6 +13,7 @@ Meteor.autorun(function () {
 	Meteor.subscribe("users");
 	Meteor.subscribe("task_comments");
 	Meteor.subscribe("records");
+	Meteor.subscribe("current_page", Session.get("current_page"));
 	Meteor.subscribe("current_task", Session.get("current_task"));
 	Meteor.subscribe("current_project", Session.get("current_project"));
 	Meteor.subscribe("current_editing", Session.get("current_editing"));

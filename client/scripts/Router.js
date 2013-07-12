@@ -16,10 +16,12 @@
             "edit/:collection/:collectionID": "editCollectionModal"
         },
         index: function () {
+            Session.set("current_page", "");
             Session.set("current_task", null);
             Session.set("partner_id", null);
             Session.set("current_project", null);
             Session.set("current_editing", null);
+            // Aca podria haber un Session.set("new_user", false);
         },
         userLogout: function () {
             Meteor.logout(function (Error) {
@@ -36,16 +38,17 @@
         newCollectionModal: function (collection) {
             switch (collection) {
             case "client":
-                $("#Modal_new_client").modal("show");
-                Template.Modal_new_client.rendered = function () {
-                    $("#Modal_new_client").modal("show");
-                };
+                // $("#Modal_new_client").modal("show");
+                // Template.Modal_new_client.rendered = function () {
+                //     $("#Modal_new_client").modal("show");
+                // };
                 break;
             case "project":
-                $("#Modal_new_project").modal("show");
-                Template.Modal_new_project.rendered = function () {
-                    $("#Modal_new_project").modal("show");
-                };
+                Session.set("current_page", "new_project");
+                // $("#Modal_new_project").modal("show");
+                // Template.Modal_new_project.rendered = function () {
+                //     $("#Modal_new_project").modal("show");
+                // };
                 break;
             case "user":
                 Session.set("new_user", true);

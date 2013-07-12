@@ -144,15 +144,23 @@ Records.allow({
 });
 
 Accounts.config({
-	sendVerificationEmail: false,
+	sendVerificationEmail: true,
 	forbidClientAccountCreation: false
 });
 
-// Accounts.validateNewUser(function (user) {
-// 	if (user.email && user.email.length >= 3)
-// 		return true;
-// 	throw new Meteor.Error(403, "Username must have at least 3 characters");
-// });
+/*Accounts.validateNewUser(function (user) {
+	var emailAt;
+	if (user.email && user.email.length >= 3) {
+		if (document.location.host(emailAt) !== null) {
+			emailAt = user.email.split("@")[1];
+			return true;
+		} else {
+			throw new Meteor.Error(403, "Email doesn't match this domain");
+		}
+	} else {
+		throw new Meteor.Error(403, "Email must have at least 3 characters");
+	}
+});*/
 
 // Meteor.publish("tasks", function() {
 // 	return Tasks.find();

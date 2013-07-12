@@ -7,7 +7,7 @@
         "keypress .new_user_form": function (event) {
             if (event.which === 13) {
                 event.preventDefault();
-                $(document).find(".new_user_register").click();
+                $(".new_user_register").click();
             }
         },
         "click .new_user_register": function (event) {

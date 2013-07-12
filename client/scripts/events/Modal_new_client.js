@@ -20,7 +20,7 @@
             Clients.insert(new_client);
     
             $("#new_client_name").val("")
-            $("#Modal_new_client").modal('hide');
+            $("#Modal_new_client").modal("hide");
         }
     };
 }(jQuery));
